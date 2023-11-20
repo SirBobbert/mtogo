@@ -118,4 +118,32 @@ public class CustomerService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
         }
     }
+
+    public ResponseEntity<?> deleteCustomer(Integer customerId) {
+        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+
+        if (customerOptional.isPresent()) {
+            customerRepository.deleteById(customerId);
+            return ResponseEntity.ok("Customer deleted successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
+        }
+    }
+
+    public ResponseEntity<?> loginCustomer(Customer customer) {
+        Optional<Customer> customerOptional = customerRepository.findByEmail(customer.getEmail());
+
+        if (customerOptional.isPresent()) {
+            Customer customerToLogin = customerOptional.get();
+
+            if (matches(customer.getPassword(), customerToLogin.getPassword())) {
+                return ResponseEntity.ok("Login successful");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with email: " + customer.getEmail());
+        }
+    }
+
 }

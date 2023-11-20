@@ -33,9 +33,15 @@ public class CustomerController {
         return customerService.updateCustomer(customerId, customer);
     }
 
-    // Other methods for updating, deleting, etc.
+    @DeleteMapping("/delete/{customerId}")
+    public ResponseEntity<?> deleteCustomer(@PathVariable Integer customerId) {
+        return customerService.deleteCustomer(customerId);
+    }
 
-    // Helper functions
+    @PostMapping("/login")
+    public ResponseEntity<?> loginCustomer(@RequestBody Customer customer) {
+        return customerService.loginCustomer(customer);
+    }
 
 
 }
