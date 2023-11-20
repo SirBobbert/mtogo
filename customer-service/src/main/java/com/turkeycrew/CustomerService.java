@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Service
@@ -15,6 +16,13 @@ public class CustomerService {
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
+
+    // TODO: Implement the following methods:
+    // - createCustomer
+    // - getCustomerById
+    // - updateCustomer
+    // - deleteCustomer
+    // - also make sure that enough tests and error handling are written for each of these methods
 
     public ResponseEntity<String> createCustomer(Customer customer) {
 
@@ -34,6 +42,23 @@ public class CustomerService {
         return ResponseEntity.status(HttpStatus.CREATED).body(customer.toString());
     }
 
+    public ResponseEntity<String> getCustomerById(Integer customerId) {
+        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+
+        if (customerOptional.isPresent()) {
+            Customer customer = customerOptional.get();
+
+            String response = "Customer ID: " + customer.getId() +
+                    "\nUsername: " + customer.getFullName() +
+                    "\nEmail: " + customer.getEmail();
+
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
+        }
+    }
+
+
     // Email validation helper function
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
@@ -52,4 +77,6 @@ public class CustomerService {
     public static boolean matches(String rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }
+
+
 }

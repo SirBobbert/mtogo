@@ -23,12 +23,9 @@ public class CustomerController {
         }
     }
 
-
     @GetMapping("/{customerId}")
     public ResponseEntity<?> getCustomer(@PathVariable Integer customerId) {
-        // Delegate to service for retrieving customer details
-        // Return appropriate response
-        return null;
+        return customerService.getCustomerById(customerId);
     }
 
     // Other methods for updating, deleting, etc.
