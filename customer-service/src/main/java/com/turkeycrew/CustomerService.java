@@ -79,4 +79,43 @@ public class CustomerService {
     }
 
 
+    public ResponseEntity<?> updateCustomer(Integer customerId, Customer customer) {
+        Optional<Customer> customerOptional = customerRepository.findById(customerId);
+
+        if (customerOptional.isPresent()) {
+            Customer customerToUpdate = customerOptional.get();
+
+            if (customer.getEmail() != null) {
+                String newEmail = customer.getEmail();
+
+                if (newEmail.equals(customerToUpdate.getEmail())) {
+                    return ResponseEntity.status(HttpStatus.OK).body("This email address is already yours");
+                }
+
+                if (!isValidEmail(newEmail)) {
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid email address");
+                }
+
+                if (customerRepository.existsByEmail(newEmail)) {
+                    return ResponseEntity.status(HttpStatus.CONFLICT).body("A customer with the email " + newEmail + " already exists");
+                }
+
+                customerToUpdate.setEmail(newEmail);
+            }
+
+            if (customer.getEmail() != null) {
+                customerToUpdate.setEmail(customer.getEmail());
+            }
+
+            if (customer.getPassword() != null) {
+                String encryptedPassword = encodePassword(customer.getPassword());
+                customerToUpdate.setPassword(encryptedPassword);
+            }
+
+            customerRepository.save(customerToUpdate);
+            return ResponseEntity.ok("Customer updated successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
+        }
+    }
 }

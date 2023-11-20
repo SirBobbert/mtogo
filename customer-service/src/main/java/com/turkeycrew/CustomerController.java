@@ -23,9 +23,14 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/{customerId}")
+    @GetMapping("/find/{customerId}")
     public ResponseEntity<?> getCustomer(@PathVariable Integer customerId) {
         return customerService.getCustomerById(customerId);
+    }
+
+    @PutMapping("/update/{customerId}")
+    public ResponseEntity<?> updateCustomer(@PathVariable Integer customerId, @RequestBody Customer customer) {
+        return customerService.updateCustomer(customerId, customer);
     }
 
     // Other methods for updating, deleting, etc.
