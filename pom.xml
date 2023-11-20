@@ -14,6 +14,7 @@
     <url>https://www.example.com</url>
     <modules>
         <module>user</module>
+        <module>customer-service</module>
     </modules>
 
     <properties>
