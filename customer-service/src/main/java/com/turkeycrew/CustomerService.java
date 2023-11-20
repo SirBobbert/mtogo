@@ -22,10 +22,6 @@ public class CustomerService {
     }
 
     // TODO: Implement the following methods:
-    // - createCustomer
-    // - getCustomerById
-    // - updateCustomer
-    // - deleteCustomer
     // - also make sure that enough tests and error handling are written for each of these methods
 
     public ResponseEntity<String> createCustomer(Customer customer) {
@@ -52,9 +48,7 @@ public class CustomerService {
         if (customerOptional.isPresent()) {
             Customer customer = customerOptional.get();
 
-            String response = "Customer ID: " + customer.getId() +
-                    "\nUsername: " + customer.getFullName() +
-                    "\nEmail: " + customer.getEmail();
+            String response = "Customer ID: " + customer.getId() + "\nUsername: " + customer.getFullName() + "\nEmail: " + customer.getEmail();
 
             return ResponseEntity.ok(response);
         } else {
@@ -65,8 +59,7 @@ public class CustomerService {
 
     // Email validation helper function
     private boolean isValidEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(emailRegex);
         return pattern.matcher(email).matches();
     }
@@ -142,7 +135,7 @@ public class CustomerService {
         }
     }
 
-    // Password encoder helper functions
+    // Helper functions
     private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public static String encodePassword(String plainPassword) {
@@ -155,9 +148,7 @@ public class CustomerService {
 
     private String generateToken(Integer customerId) {
         // In a real-world scenario, you'd want to customize the claims (e.g., add user roles, expiration time, etc.)
-        return Jwts.builder()
-                .setSubject(customerId.toString())
-                .signWith(SignatureAlgorithm.HS256, "secretKey") // Use a secure secret key
+        return Jwts.builder().setSubject(customerId.toString()).signWith(SignatureAlgorithm.HS256, "secretKey") // Use a secure secret key
                 .compact();
     }
 
