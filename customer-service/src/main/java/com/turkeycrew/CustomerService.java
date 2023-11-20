@@ -1,5 +1,9 @@
 package com.turkeycrew;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -67,18 +71,6 @@ public class CustomerService {
         return pattern.matcher(email).matches();
     }
 
-    // Password encoder helper functions
-    private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
-    public static String encodePassword(String plainPassword) {
-        return passwordEncoder.encode(plainPassword);
-    }
-
-    public static boolean matches(String rawPassword, String encodedPassword) {
-        return passwordEncoder.matches(rawPassword, encodedPassword);
-    }
-
-
     public ResponseEntity<?> updateCustomer(Integer customerId, Customer customer) {
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
 
@@ -137,7 +129,11 @@ public class CustomerService {
             Customer customerToLogin = customerOptional.get();
 
             if (matches(customer.getPassword(), customerToLogin.getPassword())) {
-                return ResponseEntity.ok("Login successful");
+                // Generate a JWT token
+                String token = generateToken(customerToLogin.getId());
+
+                // Return the token along with a success message
+                return ResponseEntity.ok("Login successful. Token: " + token);
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password");
             }
@@ -146,4 +142,29 @@ public class CustomerService {
         }
     }
 
+    // Password encoder helper functions
+    private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    public static String encodePassword(String plainPassword) {
+        return passwordEncoder.encode(plainPassword);
+    }
+
+    public static boolean matches(String rawPassword, String encodedPassword) {
+        return passwordEncoder.matches(rawPassword, encodedPassword);
+    }
+
+    private String generateToken(Integer customerId) {
+        // In a real-world scenario, you'd want to customize the claims (e.g., add user roles, expiration time, etc.)
+        return Jwts.builder()
+                .setSubject(customerId.toString())
+                .signWith(SignatureAlgorithm.HS256, "secretKey") // Use a secure secret key
+                .compact();
+    }
+
+    void clearTokenFromClient(HttpServletResponse response) {
+        Cookie cookie = new Cookie("authToken", null);
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+    }
 }

@@ -1,5 +1,6 @@
 package com.turkeycrew;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,5 +44,11 @@ public class CustomerController {
         return customerService.loginCustomer(customer);
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<?> logoutCustomer(HttpServletResponse response) {
+        // Assuming you have a method to clear the token from the client
+        customerService.clearTokenFromClient(response);
 
+        return ResponseEntity.ok("Logout successful");
+    }
 }
