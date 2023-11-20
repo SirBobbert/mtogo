@@ -46,9 +46,7 @@ public class CustomerController {
 
     @PostMapping("/logout")
     public ResponseEntity<?> logoutCustomer(HttpServletResponse response) {
-        // Assuming you have a method to clear the token from the client
-        customerService.clearTokenFromClient(response);
-
+        customerService.logoutCustomer(response);
         return ResponseEntity.ok("Logout successful");
     }
 }
