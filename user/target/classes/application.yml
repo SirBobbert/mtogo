@@ -1,0 +1,35 @@
+# Server is to be incremented by 1 for each service
+server:
+  port: 8080
+
+spring:
+  application:
+    name: user
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/fraud
+    username: root
+    password: 1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: user-group
+
+    producer:
+      bootstrap-servers: localhost:9092
+
+  cloud:
+    stream:
+      bindings:
+        output:
+          # Produces to these topics
+          destination: my-customer-topic, another-topic
+        input:
+          # Consumes from these topics
+          destination: my-other-topic
