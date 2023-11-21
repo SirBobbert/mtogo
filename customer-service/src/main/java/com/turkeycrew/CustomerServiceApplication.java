@@ -7,12 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CustomerServiceApplication {
 
-    // TODO: Setup topics for kafka when an api is called
-    // TODO: Folders?
-    // TODO: Test all apis and its fucntions
-    // TODO: Frontend?
+    // TODO: Test all apis and its functions
     // TODO: Make sure that the authentication works
     // TODO: Fix error handling on apis
+    // TODO: GitHub Actions
+    // TODO: Automated Tests
 
     public static void main(String[] args) {
         SpringApplication.run(CustomerServiceApplication.class, args);

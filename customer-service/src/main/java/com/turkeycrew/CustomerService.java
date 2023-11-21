@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 import static com.turkeycrew.CustomerUtils.*;
 
@@ -18,9 +17,6 @@ public class CustomerService {
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
-
-    // TODO: Implement the following methods:
-    // - also make sure that enough tests and error handling are written for each of these methods
 
     public ResponseEntity<String> createCustomer(Customer customer) {
 
@@ -52,14 +48,6 @@ public class CustomerService {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
         }
-    }
-
-
-    // Email validation helper function
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        return pattern.matcher(email).matches();
     }
 
     public ResponseEntity<?> updateCustomer(Integer customerId, Customer customer) {
