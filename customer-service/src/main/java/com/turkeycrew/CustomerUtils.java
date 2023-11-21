@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class CustomerUtils {
 
-    private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    public static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public static String encodePassword(String plainPassword) {
         return passwordEncoder.encode(plainPassword);

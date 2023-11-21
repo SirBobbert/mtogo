@@ -8,8 +8,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static com.turkeycrew.CustomerUtils.passwordEncoder;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -24,7 +25,6 @@ class CustomerServiceTest {
 
     @Test
     public void test_createCustomer() {
-
         // Arrange
         Customer customer = new Customer(1, "test@test.test", "1234", "John Tester");
 
@@ -54,18 +54,27 @@ class CustomerServiceTest {
         // Add more assertions if needed
     }
 
-
-
     @Test
-    void updateCustomer() {
+    void test_UpdateCustomer() {
         // Arrange
+        Integer customerId = 1;
+        Customer existingCustomer = new Customer(customerId, "existing@test.com", "oldpassword", "Old User");
+        Customer updatedCustomer = new Customer(customerId, "updated@test.com", "newpassword", "Updated User");
 
-        // Mock behaviour
+        when(customerRepository.findById(customerId)).thenReturn(java.util.Optional.of(existingCustomer));
+        when(customerRepository.existsByEmail(updatedCustomer.getEmail())).thenReturn(false);
+        when(customerRepository.save(any())).thenReturn(updatedCustomer);
 
         // Act
+        ResponseEntity<?> response = customerService.updateCustomer(customerId, updatedCustomer);
 
         // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode()); // Check if the status code is OK
+        assertEquals("Customer updated successfully", response.getBody()); // Check the response body
+        assertNotEquals("oldpassword", existingCustomer.getPassword()); // Ensure password is updated
+        assertTrue(passwordEncoder.matches("newpassword", existingCustomer.getPassword())); // Validate encoded password
     }
+
 
     @Test
     void deleteCustomer() {
