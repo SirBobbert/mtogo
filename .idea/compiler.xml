@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="customer-service" />
         <module name="user" />
+        <module name="restaurant-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
