@@ -77,11 +77,23 @@ class CustomerServiceTest {
 
 
     @Test
-    void deleteCustomer() {
+    void test_deleteCustomer() {
+        // Arrange
+        Customer customer = new Customer(1, "test@test.test", "1234", "John Tester");
+
+        when(customerRepository.findById(customer.getId())).thenReturn(java.util.Optional.of(customer));
+
+        // Act
+        ResponseEntity<?> response = customerService.deleteCustomer(customer.getId());
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode()); // Check if the status code is OK
+        assertEquals("Customer deleted successfully", response.getBody()); // Check the response body
     }
 
     @Test
     void loginCustomer() {
+
     }
 
     @Test
