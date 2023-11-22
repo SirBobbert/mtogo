@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 import static com.turkeycrew.CustomerUtils.*;
+import static java.util.regex.Pattern.matches;
 
 @Service
 public class CustomerService {
@@ -116,6 +117,7 @@ public class CustomerService {
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password");
             }
+
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with email: " + customer.getEmail());
         }
@@ -123,5 +125,25 @@ public class CustomerService {
 
     public void logoutCustomer(HttpServletResponse response) {
         clearTokenFromClient(response);
+    }
+
+    public ResponseEntity<?> loginCustomertest(Customer customer) {
+        // Retrieve the customer from the database based on the email
+        // This assumes that the email is unique
+        Customer storedCustomer = customerRepository.findByEmail(customer.getEmail()).orElse(null);
+
+        if (storedCustomer != null && isValidPassword(customer.getPassword(), storedCustomer.getPassword())) {
+            // Authentication successful
+            return ResponseEntity.ok("Login successful");
+        } else {
+            // Authentication failed
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect email or password");
+        }
+    }
+
+    private boolean isValidPassword(String inputPassword, String storedPassword) {
+        // You need to implement your password comparison logic here
+        // This is a simple example assuming plain text passwords
+        return inputPassword.equals(storedPassword);
     }
 }
