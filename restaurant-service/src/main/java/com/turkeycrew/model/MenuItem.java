@@ -1,7 +1,6 @@
 package com.turkeycrew.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,12 +30,14 @@ public class MenuItem {
 
     @NotNull(message = "Price is required")
     @Positive(message = "Price must be positive")
-    private Double price; // Use Double instead of double to allow null
+    private Double price;
 
-
-    // In MenuItem entity
     @ManyToOne
     @JoinColumn(name = "restaurant_fk")
     @JsonBackReference
     private Restaurant restaurant;
+
+    public void setRestaurantId(Integer restaurantId) {
+        setRestaurant(Restaurant.builder().restaurantId(restaurantId).build());
+    }
 }
