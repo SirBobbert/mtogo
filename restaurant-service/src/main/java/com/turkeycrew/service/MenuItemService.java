@@ -27,4 +27,8 @@ public class MenuItemService {
         return ResponseEntity.ok("MenuItem added successfully");
     }
 
+    public ResponseEntity<?> updateMenuItem(MenuItem menuItem) {
+        menuItemRepository.save(menuItem);
+        return ResponseEntity.ok("MenuItem updated successfully");
+    }
 }
