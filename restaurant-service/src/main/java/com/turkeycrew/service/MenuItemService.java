@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MenuItemService {
@@ -31,4 +32,23 @@ public class MenuItemService {
         menuItemRepository.save(menuItem);
         return ResponseEntity.ok("MenuItem updated successfully");
     }
+
+
+    public ResponseEntity<?> deleteMenuItem(Integer restaurantId, Integer menuItemId) {
+        // Add logic to check if the menu item belongs to the specified restaurant
+        Optional<MenuItem> menuItemOptional = menuItemRepository.findById(menuItemId);
+
+        if (menuItemOptional.isPresent()) {
+            MenuItem menuItem = menuItemOptional.get();
+            if (menuItem.getRestaurant() != null && menuItem.getRestaurant().getRestaurantId().equals(restaurantId)) {
+                menuItemRepository.deleteById(menuItemId);
+                return ResponseEntity.ok("MenuItem deleted successfully");
+            } else {
+                return ResponseEntity.badRequest().body("Menu item does not belong to the specified restaurant.");
+            }
+        } else {
+            return ResponseEntity.badRequest().body("Menu item not found.");
+        }
+    }
+
 }

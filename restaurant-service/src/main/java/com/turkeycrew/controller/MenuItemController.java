@@ -61,8 +61,6 @@ public class MenuItemController {
 
     @PutMapping("/updateMenuItem/{restaurantId}")
     public ResponseEntity<?> updateMenuItem(@PathVariable Integer restaurantId, @RequestBody MenuItem menuItem) {
-        System.out.println("Received request with menuItem: " + menuItem);
-
         // Check if the restaurant is not null before accessing it
         if (menuItem.getRestaurant() != null) {
             // Handle the case where the restaurant is provided in the request
@@ -98,6 +96,15 @@ public class MenuItemController {
 
         return menuItemService.updateMenuItem(menuItem);
     }
+
+    @DeleteMapping("/deleteMenuItem/{restaurantId}/{menuItemId}")
+    public ResponseEntity<?> deleteMenuItem(@PathVariable Integer restaurantId, @PathVariable Integer menuItemId) {
+        if (menuItemId == null || restaurantId == null) {
+            return ResponseEntity.badRequest().body("Both restaurant ID and menu item ID are required.");
+        }
+        return menuItemService.deleteMenuItem(restaurantId, menuItemId);
+    }
+
 
 
 }
