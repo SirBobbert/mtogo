@@ -19,7 +19,7 @@ public class Feedback {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer restaurant_id;
+    private Integer feedback_id;
     private int userId;
     private int restaurantId;
     private int foodRating;
