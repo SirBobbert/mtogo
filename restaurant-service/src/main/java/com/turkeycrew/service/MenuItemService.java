@@ -21,4 +21,10 @@ public class MenuItemService {
         List<MenuItem> menuItems = menuItemRepository.findByRestaurantRestaurantId(restaurantId);
         return new ResponseEntity<>(menuItems, HttpStatus.OK);
     }
+
+    public ResponseEntity<?> addMenuItem(MenuItem menuItem) {
+        menuItemRepository.save(menuItem);
+        return ResponseEntity.ok("MenuItem added successfully");
+    }
+
 }
