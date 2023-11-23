@@ -1,12 +1,13 @@
 package com.turkeycrew.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Data
@@ -14,12 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
 public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer restaurant_id;
+    private Integer restaurantId;  // Updated to follow JavaBean naming conventions
 
     @NotBlank(message = "Name is required")
     private String name;
@@ -39,8 +39,10 @@ public class Restaurant {
     @NotBlank(message = "Description is required")
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "restaurant_id")
+    // In Restaurant entity
+    @OneToMany(mappedBy = "restaurant")
+    @JsonManagedReference
     private List<MenuItem> menu;
+
 
 }

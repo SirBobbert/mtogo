@@ -80,7 +80,7 @@ public class RestaurantService {
 
         if (restaurantOptional.isPresent()) {
             Restaurant restaurantToUpdate = restaurantOptional.get();
-            restaurant.setRestaurant_id(restaurantId);
+            restaurant.setRestaurantId(restaurantId);
 
             // Validate the Restaurant object using the configured validator
             BindingResult bindingResult = new BeanPropertyBindingResult(restaurant, "restaurant");

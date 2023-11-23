@@ -1,9 +1,8 @@
 package com.turkeycrew.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
 public class MenuItem {
 
     @Id
@@ -24,4 +22,9 @@ public class MenuItem {
     private String description;
     private double price;
 
+    // In MenuItem entity
+    @ManyToOne
+    @JoinColumn(name = "restaurant_fk")
+    @JsonBackReference
+    private Restaurant restaurant;
 }
