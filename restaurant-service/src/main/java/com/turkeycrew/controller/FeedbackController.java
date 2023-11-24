@@ -18,9 +18,19 @@ public class FeedbackController {
         return feedbackService.addFeedback(feedback);
     }
 
-    @GetMapping("/getFeedback/{feedbackId}")
+    @GetMapping("/{feedbackId}")
     public ResponseEntity<?> getFeedback(@PathVariable Integer feedbackId) {
         return feedbackService.getFeedback(feedbackId);
+    }
+
+    @GetMapping("/getFeedbackByUser/{userId}")
+    public ResponseEntity<?> getFeedbackByUser(@PathVariable Integer userId) {
+        return feedbackService.getFeedbackByUser(userId);
+    }
+
+    @GetMapping("/getFeedbackByRestaurant/{restaurantId}")
+    public ResponseEntity<?> getFeedbackByRestaurant(@PathVariable Integer restaurantId) {
+        return feedbackService.getFeedbackByRestaurant(restaurantId);
     }
 }
 
