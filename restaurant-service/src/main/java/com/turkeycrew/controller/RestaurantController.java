@@ -2,16 +2,16 @@ package com.turkeycrew.controller;
 
 import com.turkeycrew.model.Restaurant;
 import com.turkeycrew.service.RestaurantService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/restaurants")
 public class RestaurantController {
 
-    @Autowired
-    private RestaurantService restaurantService;
+    private final RestaurantService restaurantService;
 
     @PostMapping("/register")
     public ResponseEntity<?> addRestaurant(@RequestBody Restaurant restaurant) {

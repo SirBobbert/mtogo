@@ -2,16 +2,16 @@ package com.turkeycrew.controller;
 
 import com.turkeycrew.model.MenuItem;
 import com.turkeycrew.service.MenuItemService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/restaurants/menu")
 public class MenuItemController {
 
-    @Autowired
-    private MenuItemService menuItemService;
+    private final MenuItemService menuItemService;
 
     @GetMapping("/find/{restaurantId}")
     public ResponseEntity<?> getRestaurantMenu(@PathVariable Integer restaurantId) {
