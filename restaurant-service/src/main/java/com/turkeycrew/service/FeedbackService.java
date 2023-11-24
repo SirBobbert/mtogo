@@ -74,6 +74,5 @@ public class FeedbackService {
         List<Feedback> feedbackList = feedbackRepository.findByRestaurantId(restaurantId);
 
         return new ResponseEntity<>(feedbackList, HttpStatus.OK);
-
     }
 }
