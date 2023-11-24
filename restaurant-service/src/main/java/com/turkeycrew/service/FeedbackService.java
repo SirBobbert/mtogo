@@ -2,6 +2,7 @@ package com.turkeycrew.service;
 
 import com.turkeycrew.model.Feedback;
 import com.turkeycrew.repository.FeedbackRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,15 @@ public class FeedbackService {
         }
 
 
-
         return ResponseEntity.ok(feedbackRepository.save(feedback));
+    }
+
+    public ResponseEntity<?> getFeedback(Integer feedbackId) {
+
+        if (!feedbackRepository.existsById(feedbackId)) {
+            return ResponseEntity.badRequest().body("Feedback ID does not exist.");
+        }
+
+        return new ResponseEntity<>(feedbackRepository.findById(feedbackId), HttpStatus.OK);
     }
 }
