@@ -22,8 +22,6 @@ public class Feedback {
     private Integer feedback_id;
     private int userId;
     private int restaurantId;
-    private int foodRating;
-    private int experienceRating;
-    private int deliveryRating;
+    private int rating;
     private String comments;
 }
