@@ -79,13 +79,15 @@ public class CustomerService {
         Customer customer = customerRepository.findByEmailAndPassword(email, password);
 
         if (customer != null) {
+            generateToken(customer.getId());
             return ResponseEntity.ok("Login successful!");
         } else {
             return ResponseEntity.badRequest().body("Invalid email or password");
         }
     }
 
-    public void logoutCustomer(HttpServletResponse response) {
+    public ResponseEntity<?> logoutCustomer(HttpServletResponse response) {
         clearTokenFromClient(response);
+        return ResponseEntity.ok("Logout successful");
     }
 }
