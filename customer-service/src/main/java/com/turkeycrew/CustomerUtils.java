@@ -17,7 +17,7 @@ public class CustomerUtils {
         return passwordEncoder.encode(plainPassword);
     }
 
-    private boolean matches(String plainPassword, String hashedPassword) {
+    public static boolean matches(String plainPassword, String hashedPassword) {
         return BCrypt.checkpw(plainPassword, hashedPassword);
     }
 

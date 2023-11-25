@@ -12,6 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="restaurant-service" target="20" />
       <module name="untitled" target="20" />
     </bytecodeTargetLevel>
   </component>

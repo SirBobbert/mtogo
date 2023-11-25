@@ -2,7 +2,6 @@ package com.turkeycrew;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +14,7 @@ public class CustomerController {
 
     @PostMapping("/register")
     public ResponseEntity<?> createCustomer(@RequestBody Customer customer) {
-        ResponseEntity<String> response = customerService.createCustomer(customer);
-
-        if (response.getStatusCode() == HttpStatus.CREATED) {
-            return ResponseEntity.ok("Customer created successfully");
-        } else {
-            return response;
-        }
+        return customerService.createCustomer(customer);
     }
 
     @GetMapping("/find/{customerId}")
@@ -41,7 +34,7 @@ public class CustomerController {
 
     @PostMapping("/login")
     public ResponseEntity<?> loginCustomer(@RequestBody Customer customer) {
-        return customerService.loginCustomer(customer);
+        return customerService.loginCustomer(customer.getEmail(), customer.getPassword());
     }
 
     @PostMapping("/logout")
