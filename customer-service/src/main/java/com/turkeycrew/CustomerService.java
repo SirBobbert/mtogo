@@ -47,16 +47,11 @@ public class CustomerService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
         }
 
-        if (!customer.getEmail().equals(customer.getEmail()) || customerRepository.existsByEmail(customer.getEmail())) {
+        if (customerRepository.existsByEmail(customer.getEmail())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("A customer with the email " + customer.getEmail() + " already exists");
         }
 
         customer.setPassword(encodePassword(customer.getPassword()));
-
-        if (!customer.getPassword().equals(customer.getPassword())) {
-            // If yes, encode and update the password
-            customer.setPassword(encodePassword(customer.getPassword()));
-        }
 
         customer.setId(customerId);
         customerRepository.save(customer);
