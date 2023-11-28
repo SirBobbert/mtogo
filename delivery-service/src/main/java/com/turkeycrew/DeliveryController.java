@@ -1,5 +1,6 @@
 package com.turkeycrew;
 
+import com.turkeycrew.kafka.KafkaConsumerConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,12 @@ public class DeliveryController {
 
     @Autowired
     private DeliveryService deliveryService;
+    private KafkaConsumerConfig KafkaConsumerConfig;
 
+    public DeliveryController(DeliveryService deliveryService, KafkaConsumerConfig KafkaConsumerConfig) {
+        this.deliveryService = deliveryService;
+        this.KafkaConsumerConfig = KafkaConsumerConfig;
+    }
     //---------------courier api's---------------
 
     //register new courier
@@ -53,10 +59,13 @@ public class DeliveryController {
     //delete courier by id
 
     //---------------deliveryinfo api's---------------
+
     @PostMapping("/create")
-    @KafkaListener(topics = "test123")
-    public ResponseEntity<?> createDelivery(@RequestBody DeliveryInfo deliveryInfo, String customerAddress) {
-        ResponseEntity<String> response = deliveryService.createDelivery(deliveryInfo, customerAddress);
+    public ResponseEntity<?> createDelivery(@RequestBody DeliveryInfo deliveryInfo) {
+        ResponseEntity<String> response = deliveryService.createDelivery(deliveryInfo);
+
+        // Start the Kafka consumer to listen for messages
+        ;
 
         if (response.getStatusCode() == HttpStatus.CREATED) {
             return ResponseEntity.ok("DeliveryInfo create successfully");

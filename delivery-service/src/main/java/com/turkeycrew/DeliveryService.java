@@ -1,13 +1,18 @@
 package com.turkeycrew;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Optional;
 
 import static com.turkeycrew.DeliveryUtils.isValidEmail;
@@ -22,6 +27,35 @@ public class DeliveryService {
 
 
     //----------Courier functions----------
+
+
+    @KafkaListener(topics = "test123", groupId = "courier-group")
+    public void listen(ConsumerRecord<String, String> record) {
+        System.out.println("Received message from Kafka:");
+
+        String jsonString = record.value();
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, Object> payload = objectMapper.readValue(jsonString, new TypeReference<>() {
+            });
+
+//          Iterate over the entries in the message
+            for (Map.Entry<String, Object> entry : payload.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+
+//           Accessing specific fields
+             Object userId = payload.get("userId");
+             System.out.println("UserId: " + userId);
+
+        } catch (IOException e) {
+            // Handle the exception, e.g., log it or throw a custom exception
+            e.printStackTrace();
+        }
+    }
+
+
     public ResponseEntity<String> createCourier(Courier courier) {
 
         if (!isValidEmail(courier.getEmail())) {
@@ -88,73 +122,16 @@ public class DeliveryService {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //----------Delivery functions----------
-    public ResponseEntity<String> createDelivery(DeliveryInfo deliveryInfo, String customerAddress){
+    public ResponseEntity<String> createDelivery(DeliveryInfo deliveryInfo) {
 
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-        System.out.println("customerAddress: " + customerAddress);
-
-
+        // TODO: System out print newline the topic "test123"
 
         deliveryInfo.setCreationTime(LocalDateTime.now());
         deliveryInfo = deliveryRepository.save(deliveryInfo);
         System.out.println("deliveryInfo: " + deliveryInfo + " created successfully");
         return ResponseEntity.status(HttpStatus.CREATED).body(deliveryInfo.toString());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public ResponseEntity<String> getDeliveryById(Integer deliveryId) {
