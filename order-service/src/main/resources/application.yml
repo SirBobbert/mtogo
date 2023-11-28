@@ -6,7 +6,11 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/mtogo_order_service
     username: root
+<<<<<<< HEAD
     password: 1234
+=======
+    password: 12345
+>>>>>>> f12f921a828ec70848786e93e926222d70591b88
   jpa:
     hibernate:
       ddl-auto: update
