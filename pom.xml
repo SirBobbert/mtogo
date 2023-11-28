@@ -16,6 +16,7 @@
         <module>user</module>
         <module>customer-service</module>
         <module>delivery-service</module>
+        <module>restaurant-service</module>
     </modules>
 
     <properties>

@@ -10,6 +10,7 @@
         <module name="customer-service" />
         <module name="delivery-service" />
         <module name="user" />
+        <module name="restaurant-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
