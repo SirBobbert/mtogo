@@ -2,9 +2,10 @@ package com.turkeycrew;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -52,10 +53,10 @@ public class DeliveryController {
     //delete courier by id
 
     //---------------deliveryinfo api's---------------
-
     @PostMapping("/create")
-    public ResponseEntity<?> createDelivery(@RequestBody DeliveryInfo deliveryInfo) {
-        ResponseEntity<String> response = deliveryService.createDelivery(deliveryInfo);
+    @KafkaListener(topics = "test123")
+    public ResponseEntity<?> createDelivery(@RequestBody DeliveryInfo deliveryInfo, String customerAddress) {
+        ResponseEntity<String> response = deliveryService.createDelivery(deliveryInfo, customerAddress);
 
         if (response.getStatusCode() == HttpStatus.CREATED) {
             return ResponseEntity.ok("DeliveryInfo create successfully");

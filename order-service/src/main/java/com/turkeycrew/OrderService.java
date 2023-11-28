@@ -1,6 +1,7 @@
 package com.turkeycrew;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,14 +11,22 @@ import java.util.List;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository) {
+    public OrderService(OrderRepository orderRepository, KafkaTemplate<String, String> kafkaTemplate) {
         this.orderRepository = orderRepository;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     @Transactional
     public void processOrder(Order orderRequest) {
+
+
+        String customerAddress = "this is a test";
+        kafkaTemplate.send("test123", customerAddress);
+
+
         Order order = new Order();
         order.setUserId(orderRequest.getUserId());
         order.setItems(orderRequest.getItems());

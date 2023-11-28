@@ -24,6 +24,9 @@ public class Order {
     @Column(nullable = false)
     private int userId;
 
+    @Column
+    private int deliveryId;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderItem> items;
 

@@ -17,6 +17,9 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+
+
+    // User address
     @PostMapping
     public ResponseEntity<String> placeOrder(@RequestBody Order orderRequest) {
         try {

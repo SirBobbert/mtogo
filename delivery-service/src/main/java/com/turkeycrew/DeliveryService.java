@@ -3,6 +3,8 @@ package com.turkeycrew;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,6 +18,8 @@ public class DeliveryService {
 
     private final CourierRepository courierRepository;
     private final DeliveryRepository deliveryRepository;
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
 
     //----------Courier functions----------
     public ResponseEntity<String> createCourier(Courier courier) {
@@ -84,14 +88,74 @@ public class DeliveryService {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //----------Delivery functions----------
-    public ResponseEntity<String> createDelivery(DeliveryInfo deliveryInfo) {
+    public ResponseEntity<String> createDelivery(DeliveryInfo deliveryInfo, String customerAddress){
+
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+        System.out.println("customerAddress: " + customerAddress);
+
+
 
         deliveryInfo.setCreationTime(LocalDateTime.now());
         deliveryInfo = deliveryRepository.save(deliveryInfo);
         System.out.println("deliveryInfo: " + deliveryInfo + " created successfully");
         return ResponseEntity.status(HttpStatus.CREATED).body(deliveryInfo.toString());
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public ResponseEntity<String> getDeliveryById(Integer deliveryId) {
         Optional<DeliveryInfo> deliveryOptional = deliveryRepository.findById(deliveryId);
