@@ -18,7 +18,8 @@ public class DeliveryInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDateTime diliveryTime;
+    private LocalDateTime creationTime;
+    private LocalDateTime delivery;
     private String address;
     private boolean status;
 
