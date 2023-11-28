@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/mtogo
     username: root
-    password: CultC0la123!
+    password: 1234
   jpa:
     hibernate:
       ddl-auto: update
