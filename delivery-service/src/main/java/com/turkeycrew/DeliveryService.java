@@ -28,7 +28,7 @@ public class DeliveryService {
 
     //----------Courier functions----------
 
-
+//  Get an object from the message payload "filtered"
     @KafkaListener(topics = "test123", groupId = "courier-group")
     public void listen(ConsumerRecord<String, String> record) {
         System.out.println("Received message from Kafka:");
@@ -54,6 +54,13 @@ public class DeliveryService {
             e.printStackTrace();
         }
     }
+
+//    Get an object from the message payload "unfiltered"
+//    @KafkaListener(topics = "test123", groupId = "courier-group")
+//    public void test(ConsumerRecord<String, String> record) {
+//        System.out.println("Received message from Kafka:");
+//        System.out.println(record.value());
+//    }
 
 
     public ResponseEntity<String> createCourier(Courier courier) {
