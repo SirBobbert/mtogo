@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor
 @Service
@@ -66,6 +65,28 @@ public class OrderService {
                 .orElseThrow(() -> new Exception("Order not found with id: " + orderId));
     }
 
+
+    @KafkaListener(topics = "updateOrderByDeliveryId", groupId = "order-group")
+    public void listen(String message) {
+        System.out.println("Received message from Kafka:");
+        System.out.println(message);
+        System.out.println("Received message from Kafka:");
+
+        Order order = orderRepository.findLastOrder();
+        order.setDeliveryId(Integer.parseInt(message));
+
+        System.out.println(order.getDeliveryId());
+        System.out.println(order.getDeliveryId());
+        System.out.println(order.getDeliveryId());
+        System.out.println(order.getDeliveryId());
+
+        try {
+            updateOrder(order.getOrderId(), order);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Transactional
     public Order updateOrder(int orderId, Order updatedOrder) throws Exception {
         // Retrieve the existing order from the database
@@ -76,6 +97,7 @@ public class OrderService {
             existingOrder.setStatus(updatedOrder.getStatus());
             existingOrder.setItems(updatedOrder.getItems());
             existingOrder.setTotalAmount(updatedOrder.getTotalAmount());
+            existingOrder.setDeliveryId(updatedOrder.getDeliveryId());
 
             // Save the updated order back to the database
             return orderRepository.save(existingOrder);

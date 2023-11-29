@@ -1,9 +1,9 @@
 package com.turkeycrew;
 
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,18 +12,29 @@ import java.util.Optional;
 import static com.turkeycrew.DeliveryUtils.isValidEmail;
 
 @Service
-@AllArgsConstructor
 public class DeliveryService {
 
     private final CourierRepository courierRepository;
     private final DeliveryRepository deliveryRepository;
-//    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+
+    public DeliveryService(CourierRepository courierRepository, DeliveryRepository deliveryRepository, KafkaTemplate<String, Object> kafkaTemplate) {
+        this.courierRepository = courierRepository;
+        this.deliveryRepository = deliveryRepository;
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     @KafkaListener(topics = "createDeliveryByUserId", groupId = "delivery-group")
     public void listen(String message) {
         DeliveryInfo deliveryInfo = new DeliveryInfo();
         deliveryInfo.setAddress(message);
         createDelivery(deliveryInfo);
+
+        Optional<DeliveryInfo> updateDelivery = deliveryRepository.findById(deliveryInfo.getId());
+
+        if (updateDelivery.isPresent()) {
+            kafkaTemplate.send("updateOrderByDeliveryId", updateDelivery.get().getId());
+        }
     }
 
     //----------Courier functions----------
