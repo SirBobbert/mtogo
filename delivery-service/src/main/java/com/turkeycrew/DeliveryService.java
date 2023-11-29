@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -25,10 +26,25 @@ public class DeliveryService {
     private final DeliveryRepository deliveryRepository;
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-
     //----------Courier functions----------
 
-//  Get an object from the message payload "filtered"
+    @KafkaListener(topics = "test12", groupId = "courier-group")
+    public void listen2(ConsumerRecord<String, String> record) {
+        System.out.println("Received message from Kafka:");
+        System.out.println("Received message from Kafka:");
+        System.out.println("Received message from Kafka:");
+        System.out.println("Received message from Kafka:");
+        System.out.println("Received message from Kafka:");
+        System.out.println(String.valueOf(record.value()));
+        System.out.println("Received message from Kafka:");
+        System.out.println("Received message from Kafka:");
+        System.out.println("Received message from Kafka:");
+        System.out.println("Received message from Kafka:");
+        System.out.println("Received message from Kafka:");
+
+    }
+
+    //  Get an object from the message payload "filtered"
     @KafkaListener(topics = "test123", groupId = "courier-group")
     public void listen(ConsumerRecord<String, String> record) {
         System.out.println("Received message from Kafka:");
@@ -46,8 +62,21 @@ public class DeliveryService {
             }
 
 //           Accessing specific fields
-             Object userId = payload.get("userId");
-             System.out.println("UserId: " + userId);
+            Object itemsObject = payload.get("items");
+
+            if (itemsObject instanceof List) {
+                List<Map<String, Object>> itemsList = (List<Map<String, Object>>) itemsObject;
+
+                for (Map<String, Object> item : itemsList) {
+                    System.out.println("Item details:");
+                    System.out.println();
+
+                    for (Map.Entry<String, Object> entry : item.entrySet()) {
+                        System.out.println(entry.getKey() + ": " + entry.getValue());
+                    }
+                }
+            }
+
 
         } catch (IOException e) {
             // Handle the exception, e.g., log it or throw a custom exception
@@ -132,7 +161,12 @@ public class DeliveryService {
     //----------Delivery functions----------
     public ResponseEntity<String> createDelivery(DeliveryInfo deliveryInfo) {
 
+        //sharedPayload.get("userId");
+
         // TODO: System out print newline the topic "test123"
+
+        // TODO: Set deliveryAddress to the address from the message payload
+
 
         deliveryInfo.setCreationTime(LocalDateTime.now());
         deliveryInfo = deliveryRepository.save(deliveryInfo);

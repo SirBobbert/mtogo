@@ -23,10 +23,11 @@ public class OrderService {
         // TODO: Send a kafka message to topic "test123" with orderRequest
 
         try {
-
             String orderRequestJson = objectMapper.writeValueAsString(orderRequest);
             kafkaTemplate.send("test123", orderRequestJson);
+            kafkaTemplate.send("test12", orderRequest.getUserId());
 
+            orderRequest.getDeliveryId();
 
             Order order = new Order();
             order.setUserId(orderRequest.getUserId());

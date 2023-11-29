@@ -51,6 +51,10 @@ public class CustomerService {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("A customer with the email " + customer.getEmail() + " already exists");
         }
 
+        if (customerRepository.existsByAddress(customer.getAddress())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("A customer with the address " + customer.getAddress() + " already exists");
+        }
+
         customer.setPassword(encodePassword(customer.getPassword()));
 
         customer.setId(customerId);
