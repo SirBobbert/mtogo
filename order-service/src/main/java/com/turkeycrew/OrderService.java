@@ -72,6 +72,8 @@ public class OrderService {
         System.out.println(message);
         System.out.println("Received message from Kafka:");
 
+        String txt = " Order is on the way";
+
         Order order = orderRepository.findLastOrder();
         order.setDeliveryId(Integer.parseInt(message));
 
@@ -79,6 +81,8 @@ public class OrderService {
         System.out.println(order.getDeliveryId());
         System.out.println(order.getDeliveryId());
         System.out.println(order.getDeliveryId());
+
+        kafkaTemplate.send("notification", "");
 
         try {
             updateOrder(order.getOrderId(), order);

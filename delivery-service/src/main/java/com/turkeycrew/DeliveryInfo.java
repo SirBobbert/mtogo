@@ -26,5 +26,4 @@ public class DeliveryInfo {
     @ManyToOne(optional = true)
     @JoinColumn(name = "courier_id")
     private Courier courier;
-
 }

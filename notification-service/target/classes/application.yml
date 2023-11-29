@@ -1,0 +1,25 @@
+# Server is to be incremented by 1 for each service
+server:
+  port: 8086
+
+spring:
+  application:
+    name: notification
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: notification-service-group
+
+    producer:
+      bootstrap-servers: localhost:9092
+
+  cloud:
+    stream:
+      bindings:
+        output:
+          # Produces to these topics
+          destination: test123
+        input:
+          # Consumes from these topics
+          destination: test123

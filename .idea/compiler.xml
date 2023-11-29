@@ -8,13 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="delivery-service" />
-        <module name="order-service" />
         <module name="restaurant-service" />
         <module name="customer-service" />
         <module name="user" />
+        <module name="notification-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="order-service (1)" target="20" />
+      <module name="order-service (2)" target="20" />
       <module name="untitled" target="20" />
     </bytecodeTargetLevel>
   </component>
