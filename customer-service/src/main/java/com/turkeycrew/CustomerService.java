@@ -3,7 +3,11 @@ package com.turkeycrew;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 import static com.turkeycrew.CustomerUtils.*;
 
@@ -11,9 +15,21 @@ import static com.turkeycrew.CustomerUtils.*;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public CustomerService(CustomerRepository customerRepository) {
+    public CustomerService(CustomerRepository customerRepository, KafkaTemplate<String, Object> kafkaTemplate) {
         this.customerRepository = customerRepository;
+        this.kafkaTemplate = kafkaTemplate;
+    }
+
+    @KafkaListener(topics = "createOrderUserId", groupId = "customer-group")
+    public void listen(String message) {
+
+        Optional<Customer> customer = customerRepository.findById(Integer.valueOf(message));
+
+        if (customer.isPresent()) {
+            kafkaTemplate.send("createDeliveryByUserId", customer.get().getAddress());
+        }
     }
 
     public ResponseEntity<String> createCustomer(Customer customer) {

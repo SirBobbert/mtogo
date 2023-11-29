@@ -2,11 +2,13 @@ package com.turkeycrew;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @Service
@@ -16,7 +18,6 @@ public class OrderService {
     private final ObjectMapper objectMapper;
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
-
     @Transactional
     public void processOrder(Order orderRequest) {
 
@@ -24,8 +25,10 @@ public class OrderService {
 
         try {
             String orderRequestJson = objectMapper.writeValueAsString(orderRequest);
-            kafkaTemplate.send("test123", orderRequestJson);
-            kafkaTemplate.send("test12", orderRequest.getUserId());
+//            kafkaTemplate.send("test123", orderRequestJson);
+//            kafkaTemplate.send("test12", orderRequest.getUserId());
+
+            kafkaTemplate.send("createOrderUserId", orderRequest.getUserId());
 
             orderRequest.getDeliveryId();
 

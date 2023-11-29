@@ -1,19 +1,12 @@
 package com.turkeycrew;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import static com.turkeycrew.DeliveryUtils.isValidEmail;
@@ -24,65 +17,64 @@ public class DeliveryService {
 
     private final CourierRepository courierRepository;
     private final DeliveryRepository deliveryRepository;
-    private final KafkaTemplate<String, String> kafkaTemplate;
+//    private final KafkaTemplate<String, String> kafkaTemplate;
+
+    @KafkaListener(topics = "createDeliveryByUserId", groupId = "delivery-group")
+    public void listen(String message) {
+        DeliveryInfo deliveryInfo = new DeliveryInfo();
+        deliveryInfo.setAddress(message);
+        createDelivery(deliveryInfo);
+    }
 
     //----------Courier functions----------
 
-    @KafkaListener(topics = "test12", groupId = "courier-group")
-    public void listen2(ConsumerRecord<String, String> record) {
-        System.out.println("Received message from Kafka:");
-        System.out.println("Received message from Kafka:");
-        System.out.println("Received message from Kafka:");
-        System.out.println("Received message from Kafka:");
-        System.out.println("Received message from Kafka:");
-        System.out.println(String.valueOf(record.value()));
-        System.out.println("Received message from Kafka:");
-        System.out.println("Received message from Kafka:");
-        System.out.println("Received message from Kafka:");
-        System.out.println("Received message from Kafka:");
-        System.out.println("Received message from Kafka:");
-
-    }
-
-    //  Get an object from the message payload "filtered"
-    @KafkaListener(topics = "test123", groupId = "courier-group")
-    public void listen(ConsumerRecord<String, String> record) {
-        System.out.println("Received message from Kafka:");
-
-        String jsonString = record.value();
-
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            Map<String, Object> payload = objectMapper.readValue(jsonString, new TypeReference<>() {
-            });
-
-//          Iterate over the entries in the message
-            for (Map.Entry<String, Object> entry : payload.entrySet()) {
-                System.out.println(entry.getKey() + ": " + entry.getValue());
-            }
-
-//           Accessing specific fields
-            Object itemsObject = payload.get("items");
-
-            if (itemsObject instanceof List) {
-                List<Map<String, Object>> itemsList = (List<Map<String, Object>>) itemsObject;
-
-                for (Map<String, Object> item : itemsList) {
-                    System.out.println("Item details:");
-                    System.out.println();
-
-                    for (Map.Entry<String, Object> entry : item.entrySet()) {
-                        System.out.println(entry.getKey() + ": " + entry.getValue());
-                    }
-                }
-            }
-
-
-        } catch (IOException e) {
-            // Handle the exception, e.g., log it or throw a custom exception
-            e.printStackTrace();
-        }
-    }
+//    @KafkaListener(topics = "test12", groupId = "courier-group")
+//    public void listen2(ConsumerRecord<String, String> record) {
+//        System.out.println("Received message from Kafka:");
+//        System.out.println(String.valueOf(record.value()));
+//        System.out.println("Received message from Kafka:");
+//
+//    }
+//
+//    //  Get an object from the message payload "filtered"
+//    @KafkaListener(topics = "test123", groupId = "courier-group")
+//    public void listen(ConsumerRecord<String, String> record) {
+//        System.out.println("Received message from Kafka:");
+//
+//        String jsonString = record.value();
+//
+//        try {
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            Map<String, Object> payload = objectMapper.readValue(jsonString, new TypeReference<>() {
+//            });
+//
+////          Iterate over the entries in the message
+//            for (Map.Entry<String, Object> entry : payload.entrySet()) {
+//                System.out.println(entry.getKey() + ": " + entry.getValue());
+//            }
+//
+////           Accessing specific fields
+//            Object itemsObject = payload.get("items");
+//
+//            if (itemsObject instanceof List) {
+//                List<Map<String, Object>> itemsList = (List<Map<String, Object>>) itemsObject;
+//
+//                for (Map<String, Object> item : itemsList) {
+//                    System.out.println("Item details:");
+//                    System.out.println();
+//
+//                    for (Map.Entry<String, Object> entry : item.entrySet()) {
+//                        System.out.println(entry.getKey() + ": " + entry.getValue());
+//                    }
+//                }
+//            }
+//
+//
+//        } catch (IOException e) {
+//            // Handle the exception, e.g., log it or throw a custom exception
+//            e.printStackTrace();
+//        }
+//    }
 
 //    Get an object from the message payload "unfiltered"
 //    @KafkaListener(topics = "test123", groupId = "courier-group")
@@ -161,13 +153,7 @@ public class DeliveryService {
     //----------Delivery functions----------
     public ResponseEntity<String> createDelivery(DeliveryInfo deliveryInfo) {
 
-        //sharedPayload.get("userId");
-
-        // TODO: System out print newline the topic "test123"
-
         // TODO: Set deliveryAddress to the address from the message payload
-
-
         deliveryInfo.setCreationTime(LocalDateTime.now());
         deliveryInfo = deliveryRepository.save(deliveryInfo);
         System.out.println("deliveryInfo: " + deliveryInfo + " created successfully");
