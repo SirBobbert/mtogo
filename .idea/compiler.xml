@@ -12,6 +12,7 @@
         <module name="restaurant-service" />
         <module name="customer-service" />
         <module name="user" />
+        <module name="dashboard-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

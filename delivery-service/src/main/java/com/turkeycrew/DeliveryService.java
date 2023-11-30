@@ -7,6 +7,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import static com.turkeycrew.DeliveryUtils.isValidEmail;
@@ -233,5 +234,17 @@ public class DeliveryService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Delivery not found with ID: " + deliveryId);
         }
     }
+
+    public List<DeliveryInfo> getAllDeliveries() {
+        return deliveryRepository.findAll();
+    }
+
+    @KafkaListener(topics = "penis", groupId = "delivery-group")
+    public void listen2(String message) {
+        System.out.println("Received message from Kafka:");
+        System.out.println(message);
+        kafkaTemplate.send("newPenis", getAllDeliveries());
+    }
+
 
 }

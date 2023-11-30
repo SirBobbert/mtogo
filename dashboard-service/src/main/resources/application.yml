@@ -1,0 +1,23 @@
+# Server is to be incremented by 1 for each service
+server:
+  port: 8085
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: dashboard-group
+
+    producer:
+      bootstrap-servers: localhost:9092
+
+  cloud:
+    stream:
+      bindings:
+        output:
+          # Produces to these topics
+          destination: test123
+        input:
+          # Consumes from these topics
+          destination: test123
+

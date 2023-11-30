@@ -57,15 +57,10 @@ public class DeliveryController {
     }
 
     //delete courier by id
-
     //---------------deliveryinfo api's---------------
-
     @PostMapping("/create")
     public ResponseEntity<?> createDelivery(@RequestBody DeliveryInfo deliveryInfo) {
         ResponseEntity<String> response = deliveryService.createDelivery(deliveryInfo);
-
-        // Start the Kafka consumer to listen for messages
-        ;
 
         if (response.getStatusCode() == HttpStatus.CREATED) {
             return ResponseEntity.ok("DeliveryInfo create successfully");
