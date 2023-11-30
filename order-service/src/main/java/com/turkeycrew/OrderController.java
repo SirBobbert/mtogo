@@ -17,15 +17,18 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @PostMapping
-    public ResponseEntity<String> placeOrder(@RequestBody Order orderRequest) {
+
+    // User address
+    @PostMapping("/create/{restaurantId}")
+    public ResponseEntity<String> placeOrder(@PathVariable Integer restaurantId, @RequestBody Order orderRequest) {
         try {
-            orderService.processOrder(orderRequest);
+            orderService.processOrder(restaurantId, orderRequest);
             return ResponseEntity.ok("Order placed successfully!");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error placing order: " + e.getMessage());
         }
     }
+
 
     @GetMapping("/{orderId}")
     public ResponseEntity<Order> getOrderDetails(@PathVariable int orderId) {

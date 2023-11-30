@@ -4,7 +4,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/mtogo
+    url: jdbc:mysql://localhost:3306/mtogo_order_service
     username: root
     password: 1234
   jpa:
@@ -13,12 +13,10 @@ spring:
       dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
 
-
-
   kafka:
     consumer:
       bootstrap-servers: localhost:9092
-      group-id: user-group
+      group-id: order-group
 
     producer:
       bootstrap-servers: localhost:9092
@@ -28,7 +26,8 @@ spring:
       bindings:
         output:
           # Produces to these topics
-          destination: my-customer-topic, another-topic
+          destination: test123
         input:
           # Consumes from these topics
-          destination: my-other-topic
+          destination: test123
+

@@ -1,45 +1,58 @@
 package com.turkeycrew;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class OrderService {
 
     private final OrderRepository orderRepository;
-
-    @Autowired
-    public OrderService(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
+    private final ObjectMapper objectMapper;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Transactional
-    public void processOrder(Order orderRequest) {
-        Order order = new Order();
-        order.setUserId(orderRequest.getUserId());
-        order.setItems(orderRequest.getItems());
-        //order.setTotalAmount(orderRequest.getTotalAmount());
-        order.setStatus(OrderStatus.PENDING); // Set the initial status
+    public void processOrder(Integer restaurantId, Order orderRequest) {
+        try {
+            String orderRequestJson = objectMapper.writeValueAsString(orderRequest);
+            kafkaTemplate.send("createOrderUserId", orderRequest.getUserId());
 
-        // Set the bidirectional relationship
-        double totalAmount = 0.0;
-        for (OrderItem orderItem : orderRequest.getItems()) {
-            orderItem.setOrder(order);
+            orderRequest.getDeliveryId();
+            Order order = new Order();
+            order.setUserId(orderRequest.getUserId());
 
-            double itemTotalPrice = orderItem.getPrice() * orderItem.getQuantity();
-            totalAmount += itemTotalPrice;
+            order.setRestaurantId(restaurantId);
 
-            orderItem.setTotalPrice(itemTotalPrice);
+            order.setItems(orderRequest.getItems());
+            // TODO: does setTotalAmount work properly?
+            order.setTotalAmount(orderRequest.getTotalAmount());
+            order.setStatus(OrderStatus.PENDING); // Set the initial status
+
+            // Set the bidirectional relationship
+            double totalAmount = 0.0;
+            for (OrderItem orderItem : orderRequest.getItems()) {
+                orderItem.setOrder(order);
+
+                double itemTotalPrice = orderItem.getPrice() * orderItem.getQuantity();
+                totalAmount += itemTotalPrice;
+
+                orderItem.setTotalPrice(itemTotalPrice);
+            }
+
+            // Assign the items to the order
+            order.setItems(orderRequest.getItems());
+            // Save the order to generate order_id and cascade to order items
+            order.setTotalAmount(totalAmount);
+            orderRepository.save(order);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        // Assign the items to the order
-        order.setItems(orderRequest.getItems());
-        // Save the order to generate order_id and cascade to order items
-        order.setTotalAmount(totalAmount);
-        orderRepository.save(order);
 
     }
 
@@ -47,6 +60,18 @@ public class OrderService {
     public Order getOrderDetails(int orderId) throws Exception {
         return orderRepository.findById(orderId)
                 .orElseThrow(() -> new Exception("Order not found with id: " + orderId));
+    }
+
+
+    @KafkaListener(topics = "updateOrderByDeliveryId", groupId = "order-group")
+    public void listen(String message) {
+        Order order = orderRepository.findLastOrder();
+        order.setDeliveryId(Integer.parseInt(message));
+        try {
+            updateOrder(order.getOrderId(), order);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Transactional
@@ -59,6 +84,7 @@ public class OrderService {
             existingOrder.setStatus(updatedOrder.getStatus());
             existingOrder.setItems(updatedOrder.getItems());
             existingOrder.setTotalAmount(updatedOrder.getTotalAmount());
+            existingOrder.setDeliveryId(updatedOrder.getDeliveryId());
 
             // Save the updated order back to the database
             return orderRepository.save(existingOrder);
@@ -66,12 +92,27 @@ public class OrderService {
             throw new Exception("Order not found with id: " + orderId);
         }
     }
+
     @Transactional(readOnly = true)
     public List<Order> getOrdersForUser(int userId) {
         // Query orders for the specified user ID
         return orderRepository.findByUserId(userId);
     }
+
     public List<Order> getOrdersByUserId(int userId) {
         return orderRepository.findByUserId(userId);
     }
+
+
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    @KafkaListener(topics = "GetAllOrdersTrigger", groupId = "order-group")
+    public void getAllDeliveriesTrigger(String message) {
+        System.out.println("Received message from Kafka:");
+        System.out.println(message);
+        kafkaTemplate.send("GetAllOrders", getAllOrders());
+    }
+
 }

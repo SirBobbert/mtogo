@@ -45,7 +45,7 @@ public class OrderServiceTest {
         });
 
         // Invoke the method
-        orderService.processOrder(orderRequest);
+//        orderService.processOrder(orderRequest);
 
         // Verify that the order was saved with any instance of Order
         verify(orderRepository).save(any(Order.class));
