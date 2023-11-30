@@ -40,9 +40,10 @@ public class Restaurant {
     private String description;
 
     // In Restaurant entity
-    @OneToMany(mappedBy = "restaurant")
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<MenuItem> menu;
+
 
 
 }

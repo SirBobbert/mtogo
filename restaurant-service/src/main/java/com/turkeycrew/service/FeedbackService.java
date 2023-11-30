@@ -6,6 +6,8 @@ import com.turkeycrew.repository.RestaurantRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +18,7 @@ public class FeedbackService {
 
     private final FeedbackRepository feedbackRepository;
     private final RestaurantRepository restaurantRepository;
-
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     public ResponseEntity<?> addFeedback(Feedback feedback) {
 
@@ -74,5 +76,12 @@ public class FeedbackService {
         List<Feedback> feedbackList = feedbackRepository.findByRestaurantId(restaurantId);
 
         return new ResponseEntity<>(feedbackList, HttpStatus.OK);
+    }
+
+    @KafkaListener(topics = "GetAllFeedbackTrigger", groupId = "order-group")
+    public void getAllDeliveriesTrigger(String message) {
+        System.out.println("Received message from Kafka:");
+        System.out.println(message);
+        kafkaTemplate.send("GetAllFeedback", feedbackRepository.findAll());
     }
 }

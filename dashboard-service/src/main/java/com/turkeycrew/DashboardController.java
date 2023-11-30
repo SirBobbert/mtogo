@@ -23,4 +23,16 @@ public class DashboardController {
     public void getOrders() {
         dashboardService.getOrders();
     }
+
+    @GetMapping("/getRestaurants")
+    public void getRestaurants() {
+        dashboardService.getRestaurants();
+    }
+
+    @GetMapping("/getFeedback")
+    public void getFeedback() {
+        dashboardService.getFeedback();
+    }
+
+
 }

@@ -56,7 +56,67 @@ public class DashboardService {
                 if (jsonNode.isArray()) {
                     for (JsonNode deliveryNode : jsonNode) {
                         // Do something with each entry in the array
-                        System.out.println(deliveryNode);
+                        System.out.println(deliveryNode.toString());
+                        System.out.println();
+                    }
+                }
+            } else {
+                // Handle non-JSON messages
+                System.out.println("Received non-JSON message: " + message);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void getRestaurants() {
+        String message = "Get order info";
+        kafkaTemplate.send("GetAllRestaurantsTrigger", message);
+    }
+
+    @KafkaListener(topics = "GetAllRestaurants")
+    public void getAllRestaurants(String message) {
+        try {
+            // Check if the message is JSON
+            if (isJson(message)) {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode jsonNode = objectMapper.readTree(message);
+
+                if (jsonNode.isArray()) {
+                    for (JsonNode restaurantNode : jsonNode) {
+                        // Do something with each entry in the array
+                        System.out.println(restaurantNode.toString());
+                        System.out.println();
+                    }
+                }
+            } else {
+                // Handle non-JSON messages
+                System.out.println("Received non-JSON message: " + message);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getFeedback() {
+        String message = "Get order info";
+        kafkaTemplate.send("GetAllFeedbackTrigger", message);
+    }
+
+    @KafkaListener(topics = "GetAllFeedback")
+    public void getAllFeedback(String message) {
+        try {
+            // Check if the message is JSON
+            if (isJson(message)) {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode jsonNode = objectMapper.readTree(message);
+
+                if (jsonNode.isArray()) {
+                    for (JsonNode restaurantNode : jsonNode) {
+                        // Do something with each entry in the array
+                        System.out.println(restaurantNode.toString());
                         System.out.println();
                     }
                 }

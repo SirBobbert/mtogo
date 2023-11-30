@@ -5,6 +5,8 @@ import com.turkeycrew.repository.RestaurantRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Validator;
 
@@ -14,7 +16,7 @@ public class RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
     private final Validator validator;
-
+    private final KafkaTemplate<String, Object> kafkaTemplate;
     public ResponseEntity<?> getRestaurantById(Integer restaurantId) {
 
         if (!restaurantRepository.existsById(restaurantId)) {
@@ -80,5 +82,12 @@ public class RestaurantService {
         restaurantRepository.save(restaurant);
 
         return ResponseEntity.ok("Restaurant updated successfully");
+    }
+
+    @KafkaListener(topics = "GetAllRestaurantsTrigger", groupId = "order-group")
+    public void getAllDeliveriesTrigger(String message) {
+        System.out.println("Received message from Kafka:");
+        System.out.println(message);
+        kafkaTemplate.send("GetAllRestaurants", restaurantRepository.findAll());
     }
 }
