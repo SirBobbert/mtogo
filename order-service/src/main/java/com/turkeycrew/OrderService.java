@@ -18,23 +18,20 @@ public class OrderService {
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Transactional
-    public void processOrder(Order orderRequest) {
-
-        // TODO: Send a kafka message to topic "test123" with orderRequest
-
+    public void processOrder(Integer restaurantId, Order orderRequest) {
         try {
             String orderRequestJson = objectMapper.writeValueAsString(orderRequest);
-//            kafkaTemplate.send("test123", orderRequestJson);
-//            kafkaTemplate.send("test12", orderRequest.getUserId());
-
             kafkaTemplate.send("createOrderUserId", orderRequest.getUserId());
 
             orderRequest.getDeliveryId();
-
             Order order = new Order();
             order.setUserId(orderRequest.getUserId());
+
+            order.setRestaurantId(restaurantId);
+
             order.setItems(orderRequest.getItems());
-            //order.setTotalAmount(orderRequest.getTotalAmount());
+            // TODO: does setTotalAmount work properly?
+            order.setTotalAmount(orderRequest.getTotalAmount());
             order.setStatus(OrderStatus.PENDING); // Set the initial status
 
             // Set the bidirectional relationship
@@ -68,31 +65,8 @@ public class OrderService {
 
     @KafkaListener(topics = "updateOrderByDeliveryId", groupId = "order-group")
     public void listen(String message) {
-        System.out.println("Received message from Kafka:");
-        System.out.println(message);
-        System.out.println("Received message from Kafka:");
-
         Order order = orderRepository.findLastOrder();
         order.setDeliveryId(Integer.parseInt(message));
-
-        System.out.println(order.getDeliveryId());
-        System.out.println(order.getDeliveryId());
-        System.out.println(order.getDeliveryId());
-        System.out.println(order.getDeliveryId());
-
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-        System.out.println("test");
-
         try {
             updateOrder(order.getOrderId(), order);
         } catch (Exception e) {
@@ -128,4 +102,17 @@ public class OrderService {
     public List<Order> getOrdersByUserId(int userId) {
         return orderRepository.findByUserId(userId);
     }
+
+
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    @KafkaListener(topics = "GetAllOrdersTrigger", groupId = "order-group")
+    public void getAllDeliveriesTrigger(String message) {
+        System.out.println("Received message from Kafka:");
+        System.out.println(message);
+        kafkaTemplate.send("GetAllOrders", getAllOrders());
+    }
+
 }

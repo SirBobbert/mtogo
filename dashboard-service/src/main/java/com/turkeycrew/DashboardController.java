@@ -14,8 +14,13 @@ public class DashboardController {
         this.dashboardService = dashboardService;
     }
 
-    @GetMapping("/test")
+    @GetMapping("/getDeliveries")
     public void test() {
-        dashboardService.getDelivery();
+        dashboardService.getDeliveries();
+    }
+
+    @GetMapping("/getOrders")
+    public void getOrders() {
+        dashboardService.getOrders();
     }
 }

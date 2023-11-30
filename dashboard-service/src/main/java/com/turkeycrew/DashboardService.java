@@ -6,6 +6,8 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 public class DashboardService {
 
@@ -15,7 +17,7 @@ public class DashboardService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void getDelivery() {
+    public void getDeliveries() {
         String message = "Get delivery info";
         kafkaTemplate.send("GetAllDeliveriesTrigger", message);
     }
@@ -30,10 +32,50 @@ public class DashboardService {
                 for (JsonNode deliveryNode : jsonNode) {
                     // Do something with each entry in the array
                     System.out.println(deliveryNode);
+                    System.out.println();
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void getOrders() {
+        String message = "Get order info";
+        kafkaTemplate.send("GetAllOrdersTrigger", message);
+    }
+
+    @KafkaListener(topics = "GetAllOrders")
+    public void getAllOrders(String message) {
+        try {
+            // Check if the message is JSON
+            if (isJson(message)) {
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode jsonNode = objectMapper.readTree(message);
+
+                if (jsonNode.isArray()) {
+                    for (JsonNode deliveryNode : jsonNode) {
+                        // Do something with each entry in the array
+                        System.out.println(deliveryNode);
+                        System.out.println();
+                    }
+                }
+            } else {
+                // Handle non-JSON messages
+                System.out.println("Received non-JSON message: " + message);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Helper method to check if a string is valid JSON
+    private boolean isJson(String str) {
+        try {
+            new ObjectMapper().readTree(str);
+            return true;
+        } catch (IOException e) {
+            return false;
         }
     }
 

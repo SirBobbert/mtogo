@@ -1,9 +1,8 @@
 package com.turkeycrew;
 
 
-import lombok.*;
 import jakarta.persistence.*;
-import net.bytebuddy.agent.VirtualMachine;
+import lombok.*;
 
 import java.util.List;
 
@@ -26,6 +25,9 @@ public class Order {
 
     @Column
     private int deliveryId;
+
+    @Column
+    private int restaurantId;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderItem> items;
