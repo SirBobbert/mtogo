@@ -30,6 +30,14 @@ public class CustomerService {
         if (customer.isPresent()) {
             kafkaTemplate.send("createDeliveryByUserId", customer.get().getAddress());
         }
+
+        System.out.println("CUSTOMER SERVICE U ARE HERE");
+        System.out.println("CUSTOMER SERVICE U ARE HERE");
+        System.out.println("CUSTOMER SERVICE U ARE HERE");
+        System.out.println("CUSTOMER SERVICE U ARE HERE");
+        System.out.println("CUSTOMER SERVICE U ARE HERE");
+        System.out.println("CUSTOMER SERVICE U ARE HERE");
+        System.out.println("CUSTOMER SERVICE U ARE HERE");
     }
 
     public ResponseEntity<String> createCustomer(Customer customer) {

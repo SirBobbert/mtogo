@@ -80,6 +80,19 @@ public class OrderService {
         System.out.println(order.getDeliveryId());
         System.out.println(order.getDeliveryId());
 
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+        System.out.println("test");
+
         try {
             updateOrder(order.getOrderId(), order);
         } catch (Exception e) {

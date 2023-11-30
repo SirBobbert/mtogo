@@ -239,11 +239,11 @@ public class DeliveryService {
         return deliveryRepository.findAll();
     }
 
-    @KafkaListener(topics = "penis", groupId = "delivery-group")
-    public void listen2(String message) {
+    @KafkaListener(topics = "GetAllDeliveriesTrigger", groupId = "delivery-group")
+    public void getAllDeliveriesTrigger(String message) {
         System.out.println("Received message from Kafka:");
         System.out.println(message);
-        kafkaTemplate.send("newPenis", getAllDeliveries());
+        kafkaTemplate.send("GetAllDeliveries", getAllDeliveries());
     }
 
 

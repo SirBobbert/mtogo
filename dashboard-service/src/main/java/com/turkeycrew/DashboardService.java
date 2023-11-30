@@ -17,10 +17,10 @@ public class DashboardService {
 
     public void getDelivery() {
         String message = "Get delivery info";
-        kafkaTemplate.send("penis", message);
+        kafkaTemplate.send("GetAllDeliveriesTrigger", message);
     }
 
-    @KafkaListener(topics = "newPenis")
+    @KafkaListener(topics = "GetAllDeliveries")
     public void getAllDeliveries(String message) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
