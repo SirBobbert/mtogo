@@ -72,7 +72,7 @@ public class DashboardService {
 
 
     public void getRestaurants() {
-        String message = "Get order info";
+        String message = "Get restaurant info";
         kafkaTemplate.send("GetAllRestaurantsTrigger", message);
     }
 
@@ -101,7 +101,7 @@ public class DashboardService {
     }
 
     public void getFeedback() {
-        String message = "Get order info";
+        String message = "Get feedback info";
         kafkaTemplate.send("GetAllFeedbackTrigger", message);
     }
 
