@@ -1,4 +1,4 @@
-name: Docker Build for Service 1
+name: Docker Build for Order Service
 
 on:
   push:
@@ -16,5 +16,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Docker image for Service 1
-        run: docker build . --file Dockerfile --tag service1-container:$(date +%s)
+      - name: Build the Docker image for Order Service
+        run: docker build . --file Dockerfile --tag order-service-container:$(date +%s)
