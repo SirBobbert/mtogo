@@ -27,7 +27,7 @@ jobs:
         run: |
           docker build -t order-service-build:latest .
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push your-docker-image-name:latest
+          docker push order-service-build:latest
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
