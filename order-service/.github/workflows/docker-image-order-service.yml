@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - orderService
-  pull_request:
-    branches:
-      - orderService
 
 jobs:
   build:
@@ -17,4 +14,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build the Docker image for Order Service
-        run: docker build ./order-service -f ./order-service/Dockerfile --tag order-service-container:$(date +%s)
+        run: docker build . --file Dockerfile --tag order-service-container:$(date +%s)
