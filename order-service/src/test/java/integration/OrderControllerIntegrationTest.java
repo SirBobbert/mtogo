@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,9 +26,7 @@ public class OrderControllerIntegrationTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void test_PlaceOrder() {
-        // Implement your test logic using restTemplate
-        // For example:
+    public void test_placeOrder() {
         String url = "http://localhost:" + port + "/api/orders/create/{restaurantId}";
         ResponseEntity<String> response = restTemplate.postForEntity(url, new Order(), String.class, 1);
 
@@ -49,29 +50,20 @@ public class OrderControllerIntegrationTest {
         Map<String, String> status = new HashMap<>();
         status.put("status", "DELIVERED");
 
-        // Assuming orderId is 1
         ResponseEntity<String> response = restTemplate.exchange(
                 url, HttpMethod.PUT, new HttpEntity<>(status), String.class, 1);
 
-        System.out.println("Request URL: " + url);
-        System.out.println("Request Method: " + HttpMethod.PUT);
-        System.out.println(response.getBody());
-        System.out.println(response.getStatusCodeValue());
-        System.out.println(response.getStatusCode());
-        System.out.println(response.getHeaders());
-        System.out.println(response.getHeaders().getContentType());
-        System.out.println(response.getHeaders().getContentType().includes(MediaType.APPLICATION_JSON));
-
-        // Update the assertions to expect a 400 status code and the specific error message
         assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatusCodeValue());
         assertEquals("Order already has this status", response.getBody());
     }
 
+    @Test
+    public void test_getOrdersForUser() {
+        String url = "http://localhost:" + port + "/api/orders/user/{userId}";
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class, 1);
 
-
-
-
-
-
-    // Add more test methods for other endpoints
+        assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
+        assertTrue(response.getBody().contains("Order"));
+        // Modify the condition based on the actual response content
+    }
 }

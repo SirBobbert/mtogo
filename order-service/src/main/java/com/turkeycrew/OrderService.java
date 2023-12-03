@@ -106,7 +106,7 @@ public class OrderService {
         if (orders.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No orders found for this user");
         } else {
-            return ResponseEntity.ok(orders.toString());
+            return ResponseEntity.status(HttpStatus.OK).body(orders.toString());
         }
     }
 
