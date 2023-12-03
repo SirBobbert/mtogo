@@ -1,12 +1,12 @@
-name: Docker Build for Order Service
+name: Docker Image CI (Order Service)
 
 on:
   push:
     branches:
-      - order-service
+      - orderService
   pull_request:
     branches:
-      - order-service
+      - orderService
 
 jobs:
   build:
