@@ -14,8 +14,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class OrderServiceTest {
@@ -135,8 +134,6 @@ class OrderServiceTest {
         assertEquals(HttpStatus.CREATED, result.getStatusCode());
         assertTrue(result.getBody().contains("Order processed successfully"));
     }
-
-
 
 
     @Test
@@ -309,5 +306,18 @@ class OrderServiceTest {
         // You may want to adjust the assertion based on the actual implementation
         assertTrue(result.get(0).toString().contains("Order"));
         assertTrue(result.get(1).toString().contains("Order"));
+    }
+
+    @Test
+    void testGetAllDeliveriesTrigger() {
+        // Arrange
+        String kafkaMessage = "SomeKafkaMessage";
+
+        // Act
+        orderService.getAllDeliveriesTrigger(kafkaMessage);
+
+        // Assert
+        // Add assertions here to verify the expected behavior, e.g., verify that kafkaTemplate.send is called
+        verify(kafkaTemplate, times(1)).send(eq("GetAllOrders"), any());
     }
 }
