@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -21,44 +22,23 @@ public class OrderController {
     // User address
     @PostMapping("/create/{restaurantId}")
     public ResponseEntity<String> placeOrder(@PathVariable Integer restaurantId, @RequestBody Order orderRequest) {
-        try {
-            orderService.processOrder(restaurantId, orderRequest);
-            return ResponseEntity.ok("Order placed successfully!");
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error placing order: " + e.getMessage());
-        }
+        return orderService.processOrder(restaurantId, orderRequest);
     }
 
 
     @GetMapping("/{orderId}")
-    public ResponseEntity<Order> getOrderDetails(@PathVariable int orderId) {
-        try {
-            Order order = orderService.getOrderDetails(orderId);
-            return ResponseEntity.ok(order);
-
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<String> getOrderDetails(@PathVariable Integer orderId) {
+        return orderService.getOrderDetails(orderId);
     }
 
     @PutMapping("/{orderId}")
-    public ResponseEntity<Order> updateOrderStatus(@PathVariable int orderId, @RequestBody Order updatedOrder) {
-        try {
-            Order savedOrder = orderService.updateOrder(orderId, updatedOrder);
-            return ResponseEntity.ok(savedOrder);
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<String> updateOrderStatus(@PathVariable int orderId, @RequestBody Map<String, String> status) {
+        return orderService.updateOrder(orderId, status);
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Order>> getOrdersForUser(@PathVariable int userId) {
-        try {
-            List<Order> userOrders = orderService.getOrdersForUser(userId);
-            return ResponseEntity.ok(userOrders);
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<String> getOrdersForUser(@PathVariable int userId) {
+        return orderService.getOrdersForUser(userId);
     }
 
 }

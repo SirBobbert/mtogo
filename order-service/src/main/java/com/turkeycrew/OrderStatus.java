@@ -1,10 +1,10 @@
 package com.turkeycrew;
 
 public enum OrderStatus {
-    PENDING("Pending"),
-    PROCESSING("Processing"),
-    DELIVERED("Delivered"),
-    CANCELED("Canceled");
+    PENDING("PENDING"),
+    PROCESSING("PROCESSING"),
+    DELIVERED("DELIVERED"),
+    CANCELED("CANCELED");
 
     private final String value;
 

@@ -4,6 +4,7 @@ package com.turkeycrew;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,7 +31,7 @@ public class Order {
     private int restaurantId;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<OrderItem> items;
+    private List<OrderItem> items = new ArrayList<>();
 
     @Column(nullable = false)
     private double totalAmount;
@@ -43,6 +44,20 @@ public class Order {
     // Other fields and methods
 
     // Getters and setters
+
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", userId=" + userId +
+                ", deliveryId=" + deliveryId +
+                ", restaurantId=" + restaurantId +
+                ", items=" + items +
+                ", totalAmount=" + totalAmount +
+                ", status=" + status +
+                '}';
+    }
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;

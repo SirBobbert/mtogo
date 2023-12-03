@@ -2,12 +2,16 @@ package com.turkeycrew;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -18,91 +22,92 @@ public class OrderService {
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Transactional
-    public void processOrder(Integer restaurantId, Order orderRequest) {
-        try {
-            String orderRequestJson = objectMapper.writeValueAsString(orderRequest);
-            kafkaTemplate.send("createOrderUserId", orderRequest.getUserId());
+    public ResponseEntity<String> processOrder(Integer restaurantId, Order orderRequest) {
+        kafkaTemplate.send("createOrderUserId", orderRequest.getUserId());
 
-            orderRequest.getDeliveryId();
-            Order order = new Order();
-            order.setUserId(orderRequest.getUserId());
+        orderRequest.setRestaurantId(restaurantId);
+        orderRequest.setTotalAmount(orderRequest.getTotalAmount());
 
-            order.setRestaurantId(restaurantId);
-
-            order.setItems(orderRequest.getItems());
-            // TODO: does setTotalAmount work properly?
-            order.setTotalAmount(orderRequest.getTotalAmount());
-            order.setStatus(OrderStatus.PENDING); // Set the initial status
-
-            // Set the bidirectional relationship
-            double totalAmount = 0.0;
-            for (OrderItem orderItem : orderRequest.getItems()) {
-                orderItem.setOrder(order);
-
-                double itemTotalPrice = orderItem.getPrice() * orderItem.getQuantity();
-                totalAmount += itemTotalPrice;
-
-                orderItem.setTotalPrice(itemTotalPrice);
-            }
-
-            // Assign the items to the order
-            order.setItems(orderRequest.getItems());
-            // Save the order to generate order_id and cascade to order items
-            order.setTotalAmount(totalAmount);
-            orderRepository.save(order);
-        } catch (Exception e) {
-            e.printStackTrace();
+        double totalAmount = 0.0;
+        for (OrderItem orderItem : orderRequest.getItems()) {
+            double itemTotalPrice = orderItem.getPrice() * orderItem.getQuantity();
+            totalAmount += itemTotalPrice;
         }
 
+        orderRequest.setStatus(OrderStatus.PENDING);
+        orderRequest.setTotalAmount(totalAmount);
+
+        orderRepository.save(orderRequest);
+
+        // Return a ResponseEntity with a status of 200 OK and a success message
+        return ResponseEntity.status(HttpStatus.CREATED).body("Order processed successfully");
     }
 
-    @Transactional(readOnly = true)
-    public Order getOrderDetails(int orderId) throws Exception {
-        return orderRepository.findById(orderId)
-                .orElseThrow(() -> new Exception("Order not found with id: " + orderId));
-    }
+    public ResponseEntity<String> getOrderDetails(Integer orderId) {
+        Optional<Order> order = orderRepository.findById(orderId);
 
+        if (order.isPresent()) {
+            Order orderDetails = order.get();
+
+            String response = "Order Details: " + orderDetails.toString();
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Order not found");
+        }
+    }
 
     @KafkaListener(topics = "updateOrderByDeliveryId", groupId = "order-group")
     public void listen(String message) {
         Order order = orderRepository.findLastOrder();
         order.setDeliveryId(Integer.parseInt(message));
         try {
-            updateOrder(order.getOrderId(), order);
+            updateOrder(order.getOrderId(), objectMapper.readValue("{\"status\":\"PROCESSING\"}", Map.class));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     @Transactional
-    public Order updateOrder(int orderId, Order updatedOrder) throws Exception {
-        // Retrieve the existing order from the database
-        Order existingOrder = orderRepository.findById(orderId).orElse(null);
+    public ResponseEntity<String> updateOrder(Integer orderId, Map<String, String> requestBody) {
+        String statusValue = requestBody.get("status");
 
-        if (existingOrder != null) {
-            // Update the fields based on the values in the updatedOrder
-            existingOrder.setStatus(updatedOrder.getStatus());
-            existingOrder.setItems(updatedOrder.getItems());
-            existingOrder.setTotalAmount(updatedOrder.getTotalAmount());
-            existingOrder.setDeliveryId(updatedOrder.getDeliveryId());
+        if (statusValue == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Status is missing in the request");
+        }
 
-            // Save the updated order back to the database
-            return orderRepository.save(existingOrder);
-        } else {
-            throw new Exception("Order not found with id: " + orderId);
+        try {
+            OrderStatus status = OrderStatus.valueOf(statusValue);
+
+            Optional<Order> orderOptional = orderRepository.findById(orderId);
+
+            if (orderOptional.isPresent()) {
+                Order order = orderOptional.get();
+
+                if (order.getStatus().equals(status)) {
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Order already has this status");
+                }
+
+                order.setStatus(status);
+                orderRepository.save(order);
+
+                return ResponseEntity.ok("Order updated successfully");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Order not found");
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid OrderStatus value: " + statusValue);
         }
     }
 
-    @Transactional(readOnly = true)
-    public List<Order> getOrdersForUser(int userId) {
-        // Query orders for the specified user ID
-        return orderRepository.findByUserId(userId);
-    }
+    public ResponseEntity<String> getOrdersForUser(Integer userId) {
+        List<Order> orders = orderRepository.findByUserId(userId);
 
-    public List<Order> getOrdersByUserId(int userId) {
-        return orderRepository.findByUserId(userId);
+        if (orders.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No orders found for this user");
+        } else {
+            return ResponseEntity.ok(orders.toString());
+        }
     }
-
 
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
@@ -114,5 +119,6 @@ public class OrderService {
         System.out.println(message);
         kafkaTemplate.send("GetAllOrders", getAllOrders());
     }
+
 
 }
