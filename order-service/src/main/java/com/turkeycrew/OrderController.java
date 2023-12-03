@@ -31,7 +31,7 @@ public class OrderController {
         return orderService.getOrderDetails(orderId);
     }
 
-    @PutMapping("/{orderId}")
+    @PutMapping("/updateOrder/{orderId}")
     public ResponseEntity<String> updateOrderStatus(@PathVariable int orderId, @RequestBody Map<String, String> status) {
         return orderService.updateOrder(orderId, status);
     }

@@ -76,7 +76,7 @@ public class OrderService {
         }
 
         try {
-            OrderStatus status = OrderStatus.valueOf(statusValue);
+            OrderStatus status = OrderStatus.fromValue(statusValue);
 
             Optional<Order> orderOptional = orderRepository.findById(orderId);
 
@@ -98,6 +98,7 @@ public class OrderService {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid OrderStatus value: " + statusValue);
         }
     }
+
 
     public ResponseEntity<String> getOrdersForUser(Integer userId) {
         List<Order> orders = orderRepository.findByUserId(userId);
