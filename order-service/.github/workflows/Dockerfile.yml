@@ -1,0 +1,20 @@
+name: Docker Build for Order Service
+
+on:
+  push:
+    branches:
+      - order-service
+  pull_request:
+    branches:
+      - order-service
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build the Docker image for Order Service
+        run: docker build . --file Dockerfile --tag order-service-container:$(date +%s)

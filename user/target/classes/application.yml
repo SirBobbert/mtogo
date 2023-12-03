@@ -1,15 +1,15 @@
 # Server is to be incremented by 1 for each service
 server:
-  port: 8080
+  port: 8087
 
 spring:
   application:
     name: user
 
   datasource:
-    url: jdbc:mysql://localhost:3306/fraud
-    username: root
-    password: 1234
+    url: jdbc:mysql://localhost:3306/[database_name]
+    username: username
+    password: password
 
   jpa:
     hibernate:
