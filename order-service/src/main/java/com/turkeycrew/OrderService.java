@@ -75,27 +75,19 @@ public class OrderService {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Status is missing in the request");
         }
 
-        try {
-            OrderStatus status = OrderStatus.fromValue(statusValue);
+        OrderStatus status = OrderStatus.fromValue(statusValue);
 
-            Optional<Order> orderOptional = orderRepository.findById(orderId);
+        Optional<Order> orderOptional = orderRepository.findById(orderId);
 
-            if (orderOptional.isPresent()) {
-                Order order = orderOptional.get();
+        if (orderOptional.isPresent()) {
+            Order order = orderOptional.get();
 
-                if (order.getStatus().equals(status)) {
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Order already has this status");
-                }
+            order.setStatus(status);
+            orderRepository.save(order);
 
-                order.setStatus(status);
-                orderRepository.save(order);
-
-                return ResponseEntity.ok("Order updated successfully");
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Order not found");
-            }
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid OrderStatus value: " + statusValue);
+            return ResponseEntity.ok("Order updated successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Order not found");
         }
     }
 
