@@ -18,8 +18,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version> <!-- or the latest version available -->
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>20</source>
+                    <target>20</target>
                 </configuration>
             </plugin>
             <!-- Other plugins -->
@@ -27,8 +27,8 @@
     </build>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
