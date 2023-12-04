@@ -12,9 +12,9 @@
     <artifactId>order-service</artifactId>
 
     <properties>
-        <!-- Inherit Java version from the parent POM -->
-        <java.version>${java.version}</java.version>
+        <java.version>17</java.version>
     </properties>
+
 
 
     <build>
@@ -24,7 +24,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <!-- Use the inherited Java version -->
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
@@ -32,6 +31,7 @@
             <!-- Other plugins -->
         </plugins>
     </build>
+
 
     <dependencies>
         <dependency>
