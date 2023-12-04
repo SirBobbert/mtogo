@@ -27,7 +27,7 @@
     </build>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>${java.version}</java.version>
     </properties>
 
     <dependencies>
