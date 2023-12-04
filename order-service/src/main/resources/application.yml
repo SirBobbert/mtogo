@@ -13,6 +13,7 @@ spring:
       dialect: org.hibernate.dialect.MySQL8Dialect  # Adjust this based on your MySQL version
     show-sql: true
 
+
   kafka:
     consumer:
       bootstrap-servers: localhost:9092
