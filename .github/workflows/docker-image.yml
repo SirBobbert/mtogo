@@ -17,10 +17,11 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '11'
+          java-version: '21'
 
       - name: Build with Maven and Run Tests
         run: mvn -B clean test
+
 
 
 # name: Docker Image CI (Order Service)
