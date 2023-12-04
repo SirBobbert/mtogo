@@ -11,12 +11,12 @@
         <module name="order-service" />
         <module name="restaurant-service" />
         <module name="customer-service" />
-        <module name="user" />
         <module name="dashboard-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="untitled" target="20" />
+      <module name="user" target="20" />
     </bytecodeTargetLevel>
   </component>
 </project>

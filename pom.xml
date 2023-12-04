@@ -13,7 +13,6 @@
     <!-- FIXME change it to the project's website -->
     <url>https://www.example.com</url>
     <modules>
-        <module>user</module>
         <module>order-service</module>
         <module>customer-service</module>
         <module>delivery-service</module>
