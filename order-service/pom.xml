@@ -14,18 +14,18 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.0</version> <!-- or the latest version available -->
+                <configuration>
+                    <source>20</source>
+                    <target>20</target>
+                </configuration>
             </plugin>
+            <!-- Other plugins -->
         </plugins>
     </build>
+
 
 
 
