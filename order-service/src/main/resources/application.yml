@@ -17,7 +17,6 @@ spring:
     consumer:
       bootstrap-servers: localhost:9092
       group-id: order-group
-
     producer:
       bootstrap-servers: localhost:9092
 
@@ -30,4 +29,3 @@ spring:
         input:
           # Consumes from these topics
           destination: test123
-
