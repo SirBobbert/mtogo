@@ -15,7 +15,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.28</version> <!-- Use the latest version available -->
+            <version>1.18.30</version> <!-- Use the latest version available -->
             <scope>provided</scope>
         </dependency>
 
