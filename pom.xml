@@ -46,8 +46,18 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version> <!-- Use the latest version available -->
+                <configuration>
+                    <!-- Here, you can add additional configuration for the surefire plugin -->
+                    <argLine>-Xmx512m</argLine> <!-- Example: Set maximum heap size for tests -->
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
 
 
     <dependencies>
