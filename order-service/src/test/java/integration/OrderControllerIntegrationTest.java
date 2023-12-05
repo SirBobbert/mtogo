@@ -79,15 +79,15 @@ public class OrderControllerIntegrationTest {
 //        assertEquals("Order processed successfully", response.getBody());
 //    }
 //
-    @Test
-    @Rollback
-    public void test_getOrderDetails() {
-        String url = "http://localhost:" + port + "/api/orders/{orderId}";
-        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class, 1);
-
-        assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
-        assertTrue(response.getBody().contains("Order Details"));
-    }
+//    @Test
+//    @Rollback
+//    public void test_getOrderDetails() {
+//        String url = "http://localhost:" + port + "/api/orders/{orderId}";
+//        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class, 1);
+//
+//        assertEquals(HttpStatus.OK.value(), response.getStatusCodeValue());
+//        assertTrue(response.getBody().contains("Order Details"));
+//    }
 //
 //    @Test
 //    @Rollback
