@@ -32,6 +32,11 @@ public class OrderControllerIntegrationTest {
     @MockBean
     private OrderService orderService;
 
+    @Test
+    public void test_String(){
+        System.out.println("SUI");
+    }
+
 //    @Test
 //    @Rollback
 //    public void test_placeOrder() {
