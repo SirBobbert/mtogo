@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 import static com.turkeycrew.CustomerUtils.*;
 
 @Service
@@ -64,9 +66,16 @@ public class CustomerService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
         }
 
-        customerRepository.deleteById(customerId);
-        return ResponseEntity.ok("Customer deleted successfully");
+        Optional<Customer> customerToDelete = customerRepository.findById(customerId);
+
+        if (customerToDelete != null) {
+            customerRepository.deleteById(customerId);
+            return ResponseEntity.ok("Customer deleted successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
+        }
     }
+
 
 
     public ResponseEntity<?> loginCustomer(String email, String password) {
