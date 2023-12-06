@@ -9,7 +9,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/mtogo_delivery_service
     username: root
-    password: 1234
+    password: Password123!
 
   jpa:
     hibernate:

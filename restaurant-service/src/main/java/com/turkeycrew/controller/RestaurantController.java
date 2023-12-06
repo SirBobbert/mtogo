@@ -22,6 +22,10 @@ public class RestaurantController {
     public ResponseEntity<?> getRestaurantById(@PathVariable Integer restaurantId) {
         return restaurantService.getRestaurantById(restaurantId);
     }
+    @GetMapping("/find")
+    public ResponseEntity<?> getAllRestaurants() {
+        return restaurantService.getAllRestaurants();
+    }
 
     @PutMapping("/update/{restaurantId}")
     public ResponseEntity<?> updateRestaurant(@PathVariable Integer restaurantId, @RequestBody Restaurant restaurant) {

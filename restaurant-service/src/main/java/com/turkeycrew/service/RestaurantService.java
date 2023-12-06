@@ -10,6 +10,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Validator;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class RestaurantService {
@@ -23,6 +25,21 @@ public class RestaurantService {
             return ResponseEntity.badRequest().body("Restaurant ID is required.");
         }
         return new ResponseEntity<>(restaurantRepository.findById(restaurantId), HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> getAllRestaurants() {
+        try {
+            // Fetch all restaurants from the repository
+            List<Restaurant> restaurants = restaurantRepository.findAll();
+
+            if (restaurants.isEmpty()) {
+                return ResponseEntity.noContent().build();
+            }
+
+            return new ResponseEntity<>(restaurants, HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error fetching restaurants");
+        }
     }
 
     public ResponseEntity<String> addRestaurant(Restaurant restaurant) {
