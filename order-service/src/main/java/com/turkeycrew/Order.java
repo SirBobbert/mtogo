@@ -19,22 +19,22 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int orderId;
+    private Integer orderId;
 
     @Column(nullable = false)
-    private int userId;
+    private Integer userId;
 
     @Column
-    private int deliveryId;
+    private Integer deliveryId;
 
     @Column
-    private int restaurantId;
+    private Integer restaurantId;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrderItem> items = new ArrayList<>();
 
     @Column(nullable = false)
-    private double totalAmount;
+    private Double totalAmount;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

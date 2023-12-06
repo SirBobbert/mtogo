@@ -17,6 +17,7 @@ public class RestaurantService {
     private final RestaurantRepository restaurantRepository;
     private final Validator validator;
     private final KafkaTemplate<String, Object> kafkaTemplate;
+
     public ResponseEntity<?> getRestaurantById(Integer restaurantId) {
 
         if (!restaurantRepository.existsById(restaurantId)) {
@@ -89,5 +90,9 @@ public class RestaurantService {
         System.out.println("Received message from Kafka:");
         System.out.println(message);
         kafkaTemplate.send("GetAllRestaurants", restaurantRepository.findAll());
+    }
+
+    public ResponseEntity<?> getAllRestaurants() {
+        return new ResponseEntity<>(restaurantRepository.findAll(), HttpStatus.OK);
     }
 }
