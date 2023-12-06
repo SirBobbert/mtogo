@@ -1,6 +1,7 @@
 package com.turkeycrew;
 
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -13,16 +14,12 @@ import java.util.Optional;
 
 import static com.turkeycrew.CustomerUtils.*;
 
+@AllArgsConstructor
 @Service
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final KafkaTemplate<String, Object> kafkaTemplate;
-
-    public CustomerService(CustomerRepository customerRepository, KafkaTemplate<String, Object> kafkaTemplate) {
-        this.customerRepository = customerRepository;
-        this.kafkaTemplate = kafkaTemplate;
-    }
 
     @KafkaListener(topics = "createOrderUserId", groupId = "customer-group")
     public void listen(String message) {

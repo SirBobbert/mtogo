@@ -71,6 +71,10 @@
             <version>8.0.33</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+        </dependency>
 
 
     </dependencies>
