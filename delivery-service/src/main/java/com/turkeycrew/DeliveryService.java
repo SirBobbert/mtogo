@@ -38,63 +38,6 @@ public class DeliveryService {
         }
     }
 
-    //----------Courier functions----------
-
-//    @KafkaListener(topics = "test12", groupId = "courier-group")
-//    public void listen2(ConsumerRecord<String, String> record) {
-//        System.out.println("Received message from Kafka:");
-//        System.out.println(String.valueOf(record.value()));
-//        System.out.println("Received message from Kafka:");
-//
-//    }
-//
-//    //  Get an object from the message payload "filtered"
-//    @KafkaListener(topics = "test123", groupId = "courier-group")
-//    public void listen(ConsumerRecord<String, String> record) {
-//        System.out.println("Received message from Kafka:");
-//
-//        String jsonString = record.value();
-//
-//        try {
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            Map<String, Object> payload = objectMapper.readValue(jsonString, new TypeReference<>() {
-//            });
-//
-////          Iterate over the entries in the message
-//            for (Map.Entry<String, Object> entry : payload.entrySet()) {
-//                System.out.println(entry.getKey() + ": " + entry.getValue());
-//            }
-//
-////           Accessing specific fields
-//            Object itemsObject = payload.get("items");
-//
-//            if (itemsObject instanceof List) {
-//                List<Map<String, Object>> itemsList = (List<Map<String, Object>>) itemsObject;
-//
-//                for (Map<String, Object> item : itemsList) {
-//                    System.out.println("Item details:");
-//                    System.out.println();
-//
-//                    for (Map.Entry<String, Object> entry : item.entrySet()) {
-//                        System.out.println(entry.getKey() + ": " + entry.getValue());
-//                    }
-//                }
-//            }
-//
-//
-//        } catch (IOException e) {
-//            // Handle the exception, e.g., log it or throw a custom exception
-//            e.printStackTrace();
-//        }
-//    }
-
-//    Get an object from the message payload "unfiltered"
-//    @KafkaListener(topics = "test123", groupId = "courier-group")
-//    public void test(ConsumerRecord<String, String> record) {
-//        System.out.println("Received message from Kafka:");
-//        System.out.println(record.value());
-//    }
-
 
     public ResponseEntity<String> createCourier(Courier courier) {
 
@@ -106,6 +49,7 @@ public class DeliveryService {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("A customer with the email " + courier.getEmail() + " already exists");
         }
 
+        courier.setAvailable(true);
         courier = courierRepository.save(courier);
         System.out.println("Customer: " + courier + " created successfully");
         return ResponseEntity.status(HttpStatus.CREATED).body(courier.toString());
@@ -142,8 +86,8 @@ public class DeliveryService {
             Courier updatedCourier = courierOptional.get();
             updatedCourier.setEmail(newEmail);
 
-            courierRepository.save(updatedCourier);
-            return ResponseEntity.ok("Courier updated successfully");
+            Courier response = courierRepository.save(updatedCourier);
+            return ResponseEntity.ok("Courier updated successfully" + "\nnew Email: " + response.getEmail());
 
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Courier not found with ID: " + courierId);
@@ -188,18 +132,18 @@ public class DeliveryService {
         }
     }
 
-    public ResponseEntity<String> updateDeliveryStatus(Integer deliveryId, DeliveryInfo deliveryInfo) {
+    public ResponseEntity<String> updateDeliveryStatus(Integer deliveryId) {
         Optional<DeliveryInfo> delivertyOptional = deliveryRepository.findById(deliveryId);
         if (delivertyOptional.isPresent()) {
             DeliveryInfo deliveryInfoToUpdate = delivertyOptional.get();
 
             deliveryInfoToUpdate.setDelivery(LocalDateTime.now());
-            deliveryInfoToUpdate.setStatus(deliveryInfo.isStatus());
+            deliveryInfoToUpdate.setStatus(true);
 
             deliveryRepository.save(deliveryInfoToUpdate);
-            return ResponseEntity.ok("Status has been updated");
+            return ResponseEntity.ok("Status has been updated. \nNew status: " + deliveryInfoToUpdate.isStatus());
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Delivery not found with ID: " + deliveryInfo.getId());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Delivery not found with ID: " + deliveryId);
         }
     }
 
@@ -218,7 +162,7 @@ public class DeliveryService {
             courierRepository.save(courierToUpdate);
             deliveryRepository.save(deliveryInfoToUpdate);
 
-            return ResponseEntity.ok("Courier has been added to delivery");
+            return ResponseEntity.ok("Courier has been added to delivery \nCourierId: " + courier.getId());
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Delivery not found with ID: " + deliveryId);
         }

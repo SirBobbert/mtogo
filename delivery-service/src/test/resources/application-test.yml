@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:59767/testDb
+    username: root
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # Change this according to your needs for test database creation

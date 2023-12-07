@@ -25,7 +25,7 @@ class CustomerServiceTest {
     @Test
     public void test_createCustomer() {
         // Arrange
-        Customer customer = new Customer(1, "test@test.dk", "1234", "John Tester");
+        Customer customer = new Customer(1, "test@test.dk", "1234", "John Tester", "testaddress");
 
         // Mock behaviour
         when(customerRepository.existsByEmail(customer.getEmail())).thenReturn(false);
@@ -41,7 +41,7 @@ class CustomerServiceTest {
     @Test
     void test_getCustomerById() {
         // Arrange
-        Customer customer = new Customer(1, "test@test.test", "1234", "Test Tester");
+        Customer customer = new Customer(1, "test@test.test", "1234", "Test Tester", "testaddress");
         when(customerRepository.existsById(customer.getId())).thenReturn(true);
         when(customerRepository.findById(customer.getId())).thenReturn(java.util.Optional.of(customer));
 
@@ -56,7 +56,7 @@ class CustomerServiceTest {
     @Test
     void test_UpdateCustomer() {
         // Arrange
-        Customer customer = new Customer(1, "Test@test.dk", "1234", "John Tester");
+        Customer customer = new Customer(1, "Test@test.dk", "1234", "John Tester", "testaddress");
 
         // Mock the behavior of customerRepository.findById to return Optional containing the customer
         when(customerRepository.existsById(customer.getId())).thenReturn(true);
@@ -73,7 +73,7 @@ class CustomerServiceTest {
     @Test
     void test_deleteCustomer() {
         // Arrange
-        Customer customer = new Customer(1, "test@test.test", "1234", "John Tester");
+        Customer customer = new Customer(1, "test@test.test", "1234", "John Tester", "testaddress");
 
         when(customerRepository.findById(customer.getId())).thenReturn(java.util.Optional.of(customer));
 

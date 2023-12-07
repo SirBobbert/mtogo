@@ -76,7 +76,7 @@ public class DeliveryController {
 
     @PutMapping("/update/{deliveryId}")
     public ResponseEntity<?> updateDeliveryStatus(@PathVariable Integer deliveryId, @RequestBody DeliveryInfo deliveryInfo) {
-        return deliveryService.updateDeliveryStatus(deliveryId, deliveryInfo);
+        return deliveryService.updateDeliveryStatus(deliveryId);
     }
 
     @DeleteMapping("/delete/{deliveryId}")
