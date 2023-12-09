@@ -103,24 +103,14 @@ public class CustomerService {
 
 
 
+
     public ResponseEntity<?> loginCustomer(String email, String password) {
-        Optional<Customer> customerOptional = customerRepository.findByEmail(email);
 
-        if (customerOptional.isPresent() && CustomerUtils.matches(password, customerOptional.get().getPassword())) {
-            Customer customer = customerOptional.get();
-            String authToken = CustomerUtils.generateToken(customer.getId());
+        Customer customer = customerRepository.findByEmailAndPassword(email, password);
 
-            // You may want to store the token in a cookie or send it in the response as needed
-            // For example, setting it in a cookie:
-            // response.addCookie(new Cookie("authToken", authToken));
-
-            // Create a map to hold the response data
-            Map<String, Object> responseData = new HashMap<>();
-            responseData.put("message", "Login successful");
-            responseData.put("customerId", customer.getId());
-
-            // Return a response with the map and HTTP status OK
-            return ResponseEntity.ok(responseData);
+        if (customer != null) {
+            generateToken(customer.getId());
+            return ResponseEntity.ok("Login successful!");
         } else {
             return ResponseEntity.badRequest().body("Invalid email or password");
         }
