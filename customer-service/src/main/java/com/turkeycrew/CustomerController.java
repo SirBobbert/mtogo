@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customers")
+@CrossOrigin(origins = "http://localhost:3000") // Replace with the actual origin of your React app
 public class CustomerController {
 
     @Autowired

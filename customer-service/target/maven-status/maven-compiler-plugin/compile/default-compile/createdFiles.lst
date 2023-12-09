@@ -1,0 +1,9 @@
+com\turkeycrew\CustomerUtils.class
+com\turkeycrew\kafka\KafkaConsumerConfig.class
+com\turkeycrew\Customer$CustomerBuilder.class
+com\turkeycrew\kafka\KafkaProducerConfig.class
+com\turkeycrew\CustomerController.class
+com\turkeycrew\CustomerServiceApplication.class
+com\turkeycrew\Customer.class
+com\turkeycrew\CustomerRepository.class
+com\turkeycrew\CustomerService.class

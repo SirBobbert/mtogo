@@ -1,26 +1,25 @@
 package com.turkeycrew;
 
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import static com.turkeycrew.CustomerUtils.*;
 
+@AllArgsConstructor
 @Service
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final KafkaTemplate<String, Object> kafkaTemplate;
-
-    public CustomerService(CustomerRepository customerRepository, KafkaTemplate<String, Object> kafkaTemplate) {
-        this.customerRepository = customerRepository;
-        this.kafkaTemplate = kafkaTemplate;
-    }
 
     @KafkaListener(topics = "createOrderUserId", groupId = "customer-group")
     public void listen(String message) {
@@ -92,22 +91,42 @@ public class CustomerService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
         }
 
-        customerRepository.deleteById(customerId);
-        return ResponseEntity.ok("Customer deleted successfully");
+        Optional<Customer> customerToDelete = customerRepository.findById(customerId);
+
+        if (customerToDelete != null) {
+            customerRepository.deleteById(customerId);
+            return ResponseEntity.ok("Customer deleted successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Customer not found with ID: " + customerId);
+        }
     }
 
 
+
     public ResponseEntity<?> loginCustomer(String email, String password) {
+        Optional<Customer> customerOptional = customerRepository.findByEmail(email);
 
-        Customer customer = customerRepository.findByEmailAndPassword(email, password);
+        if (customerOptional.isPresent() && CustomerUtils.matches(password, customerOptional.get().getPassword())) {
+            Customer customer = customerOptional.get();
+            String authToken = CustomerUtils.generateToken(customer.getId());
 
-        if (customer != null) {
-            generateToken(customer.getId());
-            return ResponseEntity.ok("Login successful!");
+            // You may want to store the token in a cookie or send it in the response as needed
+            // For example, setting it in a cookie:
+            // response.addCookie(new Cookie("authToken", authToken));
+
+            // Create a map to hold the response data
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("message", "Login successful");
+            responseData.put("customerId", customer.getId());
+
+            // Return a response with the map and HTTP status OK
+            return ResponseEntity.ok(responseData);
         } else {
             return ResponseEntity.badRequest().body("Invalid email or password");
         }
     }
+
+
 
     public ResponseEntity<?> logoutCustomer(HttpServletResponse response) {
         clearTokenFromClient(response);

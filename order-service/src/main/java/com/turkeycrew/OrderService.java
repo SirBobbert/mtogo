@@ -23,25 +23,42 @@ public class OrderService {
 
     @Transactional
     public ResponseEntity<String> processOrder(Integer restaurantId, Order orderRequest) {
+
+        if (restaurantId == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Restaurant doesn't exist");
+        }
+
+        if (orderRequest.getUserId() == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User ID is missing in the request");
+        }
+
+        if (orderRequest.getItems() == null || orderRequest.getItems().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Items are missing in the request");
+        }
+
         kafkaTemplate.send("createOrderUserId", orderRequest.getUserId());
 
         orderRequest.setRestaurantId(restaurantId);
-        orderRequest.setTotalAmount(orderRequest.getTotalAmount());
 
-        double totalAmount = 0.0;
+        Double totalAmount = 0.0;
+
         for (OrderItem orderItem : orderRequest.getItems()) {
             double itemTotalPrice = orderItem.getPrice() * orderItem.getQuantity();
             totalAmount += itemTotalPrice;
+
+            // Set the calculated total price for each OrderItem
+            orderItem.setTotalPrice(itemTotalPrice);
+            orderItem.setOrder(orderRequest);
         }
 
         orderRequest.setStatus(OrderStatus.PENDING);
-        orderRequest.setTotalAmount(totalAmount);
+        orderRequest.setTotalAmount(totalAmount); // Set the calculated total amount
 
         orderRepository.save(orderRequest);
 
-        // Return a ResponseEntity with a status of 200 OK and a success message
         return ResponseEntity.status(HttpStatus.CREATED).body("Order processed successfully");
     }
+
 
     public ResponseEntity<String> getOrderDetails(Integer orderId) {
         Optional<Order> order = orderRepository.findById(orderId);

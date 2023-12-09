@@ -1,0 +1,3 @@
+com\turkeycrew\ComponentTest.class
+com\turkeycrew\OrderServiceTest.class
+integration\OrderControllerIntegrationTest.class

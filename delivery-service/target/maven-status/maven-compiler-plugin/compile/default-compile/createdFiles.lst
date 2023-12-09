@@ -1,0 +1,12 @@
+com\turkeycrew\DeliveryInfo.class
+com\turkeycrew\kafka\KafkaProducerConfig.class
+com\turkeycrew\Courier$CourierBuilder.class
+com\turkeycrew\Courier.class
+com\turkeycrew\kafka\KafkaConsumerConfig.class
+com\turkeycrew\DeliveryService.class
+com\turkeycrew\DeliveryUtils.class
+com\turkeycrew\DeliveryController.class
+com\turkeycrew\DeliveryInfo$DeliveryInfoBuilder.class
+com\turkeycrew\DeliveryRepository.class
+com\turkeycrew\CourierRepository.class
+com\turkeycrew\DeliveryServiceApplication.class

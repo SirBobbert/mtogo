@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.turkeycrew.CustomerServiceTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.24 s <<< FAILURE! - in com.turkeycrew.CustomerServiceTest
+com.turkeycrew.CustomerServiceTest.test_loginCustomer  Time elapsed: 0.008 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <<200 OK OK,Login successful!,[]>> but was: <<400 BAD_REQUEST Bad Request,Invalid email or password,[]>>
+	at com.turkeycrew.CustomerServiceTest.test_loginCustomer(CustomerServiceTest.java:108)
+
