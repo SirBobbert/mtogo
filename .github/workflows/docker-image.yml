@@ -5,6 +5,7 @@ on:
     branches:
       - orderService
       - prod
+      - main
 
 jobs:
   build:
