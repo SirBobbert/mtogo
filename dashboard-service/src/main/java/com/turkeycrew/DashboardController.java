@@ -1,5 +1,6 @@
 package com.turkeycrew;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +35,48 @@ public class DashboardController {
         dashboardService.getFeedback();
     }
 
+    @GetMapping("/getAll")
+    public ResponseEntity<String> getAll() {
+        return dashboardService.getAllData();
+    }
 
+    @GetMapping("/averagePriceByCityAreaRestaurant")
+    public ResponseEntity<String> averagePriceByCityAreaRestaurant() {
+        return dashboardService.averagePriceByCityAreaRestaurant();
+    }
+
+    @GetMapping("/averageRatingByCityAreaRestaurant")
+    public ResponseEntity<String> averageRatingByCityAreaRestaurant() {
+        return dashboardService.averageRatingByCityAreaRestaurant();
+    }
+
+    @GetMapping("/distributionOfRatings")
+    public ResponseEntity<String> distributionOfRatings() {
+        return dashboardService.distributionOfRatings();
+    }
+    @GetMapping("/mostPopularFoodTypes")
+    public ResponseEntity<String> mostPopularFoodTypes() {
+        return dashboardService.mostPopularFoodTypes();
+    }
+
+    @GetMapping("deliveryTimeAnalysis")
+    public ResponseEntity<String> deliveryTimeAnalysis() {
+        return dashboardService.deliveryTimeAnalysis();
+    }
+    @GetMapping("/topRestaurants")
+    public ResponseEntity<String> topRestaurants() {
+        return dashboardService.topRestaurants();
+    }
+    @GetMapping("/foodTypePreferences")
+    public ResponseEntity<String> foodTypePreferences() {
+        return dashboardService.foodTypePreferences();
+    }
+    @GetMapping("/averageTotalRatingsByCityAreaRestaurant")
+    public ResponseEntity<String> averageTotalRatingsByCityAreaRestaurant() {
+        return dashboardService.averageTotalRatingsByCityAreaRestaurant();
+    }
+    @GetMapping("/averageDeliveryTimeByFoodType")
+    public ResponseEntity<String> averageDeliveryTimeByFoodType() {
+        return dashboardService.averageDeliveryTimeByFoodType();
+    }
 }
