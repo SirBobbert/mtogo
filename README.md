@@ -32,6 +32,10 @@ Grunden til det valg, er primært at order-servicen er hele grundlaget for vores
 ### Sekvens Diagram
 ![image](https://github.com/SirBobbert/mtogo/assets/76921857/c8af88dc-0a12-4e84-9453-f2fefa96bc6f)
 
+### Klasse Diagram
+![image](https://github.com/SirBobbert/mtogo/assets/76921857/09c823b1-a426-4e4c-93cd-25301d94c955)
+
+
 ### Arkitektur Diagram
 
 ## Installs
