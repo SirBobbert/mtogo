@@ -33,9 +33,8 @@ Grunden til det valg, er primært at order-servicen er hele grundlaget for vores
 ### Klasse Diagram
 ![image](https://github.com/SirBobbert/mtogo/assets/76921857/09c823b1-a426-4e4c-93cd-25301d94c955)
 
-
 ### Arkitektur Diagram
-![image](https://github.com/SirBobbert/mtogo/assets/76921857/b9b93a1b-aa76-4703-99b2-5a9aea3be3f4)
+![image](https://github.com/SirBobbert/mtogo/assets/76921857/81f775b8-02e8-42a3-9dbe-c1b8b22c1e5d)
 
 ## Installs
 OpenJDK v. 20
