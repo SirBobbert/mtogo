@@ -1,8 +1,41 @@
-# Required
+# Test, System integration & Development of large systems exam
+Group - TurkeyCrew
+- Tobias Linge Jensen - cph-tl233@cphbusiness.dk
+- Mathias Brix Drejer - cph-md266@cphbusiness.dk
+- Robert Pallesen - cph-rp154@cphbusiness.dk
 
-OpenJDK v. 20
+MTOGO Video Presentation:
+https://youtu.be/cWH5bsO42Qw
 
-Apache Maven v. 3.9.5
+## Table of Contents
+- [Folder Structure](#folder-structure)
+- [Project Solution & Argumentation of Choices](#project-solution--argumentation-of-choices)
+- [Database Diagram](#database-diagram)
+- [Use cases](#use-cases)
+- [Scripts to install](#scripts)
 
-Use this for creating banners to each service:
-https://devops.datenkollektiv.de/banner.txt/index.html
+## Folder Structure <a name="folder-structure"></a> 
+
+📁Script Screenshots --> Contains documentation of scripts when run.
+
+📁Endpoints --> Contains all of our endpoints used for Neo4j, Redis & MSSQL
+- 📁neo4jEndpoints.py --> Scripts for Neo4j
+- 📁redisEndpoints.py --> Scripts for Redis
+- 📁sqlEndpoints.py --> Scripts for Mssql
+
+## Project Solution & Argumentation of Choices <a name="project-solution--argumentation-of-choices"></a>
+
+
+## Database Diagram <a name="database-diagram"></a>
+![Cart in redis](cart-redis.png)
+![neo4jdb_overview](neo4jdb_overview.jpg)
+![sql-domain-model](sql-domain-model.png)
+
+
+##  Use cases <a name="use-cases">
+
+
+
+
+## Installations <a name="scripts">
+   
