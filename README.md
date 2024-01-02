@@ -21,8 +21,6 @@ Projektet er udviklet i en microservice arkitektur, skrevet i Java Boot Spring. 
 I de diagrammer vi har inkluderet, har vi primært valgt at fokusere på order-servicen.
 Grunden til det valg, er primært at order-servicen er hele grundlaget for vores applikation og er også den service der har mest kommunikation med andre services.
 
-![image](https://github.com/SirBobbert/mtogo/assets/76921857/ac92efe7-663c-435b-afb7-742ad155a629)
-
 ### Domæne model
 ![image](https://github.com/SirBobbert/mtogo/assets/76921857/9abfd4db-ad24-4873-830f-76d18d849b10)
 
@@ -37,6 +35,7 @@ Grunden til det valg, er primært at order-servicen er hele grundlaget for vores
 
 
 ### Arkitektur Diagram
+![image](https://github.com/SirBobbert/mtogo/assets/76921857/b9b93a1b-aa76-4703-99b2-5a9aea3be3f4)
 
 ## Installs
 OpenJDK v. 20
