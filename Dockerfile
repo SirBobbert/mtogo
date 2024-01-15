@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /usr/src/app
 
 # Copy the application JAR file into the container at the working directory
-COPY target/my-app.jar .
+COPY my-app.jar .
 
 # Specify the command to run on container start
 CMD ["java", "-jar", "my-app.jar"]
