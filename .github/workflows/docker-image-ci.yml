@@ -13,11 +13,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build the application
-        run: |
-          ./mvnw clean install
-          
-          cp target/*.jar /usr/src/app/my-app.jar
-
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
