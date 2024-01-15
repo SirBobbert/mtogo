@@ -21,6 +21,6 @@ jobs:
           cd order-service
           docker build . --file Dockerfile --tag order-service:latest
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push order-service:latest 2>&1 | tee push.log
+          docker push order-service:latest | tee push.log
           
           # Add similar steps for other services
