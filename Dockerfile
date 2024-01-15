@@ -4,8 +4,8 @@ FROM openjdk:11-jre-slim
 # Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Copy the application JAR file into the container at the working directory
-COPY my-app.jar .
+# Copy the placeholder file into the container at the working directory
+COPY placeholder.txt .
 
 # Specify the command to run on container start
-CMD ["java", "-jar", "my-app.jar"]
+CMD ["echo", "No application JAR found"]

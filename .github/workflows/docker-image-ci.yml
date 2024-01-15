@@ -13,5 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Build the application
+        run: |
+          # Adjust the build command based on your project structure and build tool
+          ./mvnw clean install
+          
+          # Assuming Maven builds the JAR file in the target directory
+          cp target/*.jar /usr/src/app/my-app.jar
+
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
