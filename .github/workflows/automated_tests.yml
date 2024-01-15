@@ -6,6 +6,7 @@ on:
       - orderService
       - prod
       - main
+      - legacy
 
 jobs:
   build:
