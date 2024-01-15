@@ -1,4 +1,3 @@
-# Use an official OpenJDK runtime as a parent image
 FROM openjdk:16-jre-slim
 
 # Set the working directory in the container
