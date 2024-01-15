@@ -23,4 +23,3 @@ jobs:
           echo ${{ secrets.DOCKER_TOKEN }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push order-service:latest
           
-          # Add similar steps for other services
