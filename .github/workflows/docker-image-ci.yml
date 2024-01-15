@@ -20,7 +20,7 @@ jobs:
         run: |
           cd order-service
           docker build . --file Dockerfile --tag order-service:latest
-          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          echo Test12345678 | docker login --username ropsen --password-stdin
           docker push order-service:latest
           
           cd ../order-service
