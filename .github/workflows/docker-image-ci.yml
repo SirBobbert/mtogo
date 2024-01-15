@@ -23,8 +23,6 @@ jobs:
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
           docker push order-service:latest
           
-          cd ../dashboard-service
+          cd ../order-service
           docker build . --file Dockerfile --tag dashboard-service:latest
-          docker push dashboard-service:latest
-          
-          # Repeat the above for other services (delivery-service, order-service, restaurant-service, user, etc.)
+          docker push order-service:latest
