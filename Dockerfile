@@ -1,4 +1,5 @@
-FROM openjdk:16-jre-slim
+# Use an official OpenJDK runtime as a parent image
+FROM adoptopenjdk:16-jre-hotspot
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
