@@ -18,10 +18,10 @@ jobs:
 
       - name: Build and push Docker images for services
         run: |
-          cd customer-service
-          docker build . --file Dockerfile --tag customer-service:latest
+          cd order-service
+          docker build . --file Dockerfile --tag order-service:latest
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push customer-service:latest
+          docker push order-service:latest
           
           cd ../dashboard-service
           docker build . --file Dockerfile --tag dashboard-service:latest
