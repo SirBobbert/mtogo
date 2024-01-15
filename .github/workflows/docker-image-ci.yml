@@ -16,10 +16,32 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-buildx-action@v1
 
-      - name: Build and push Docker images for services
+      - name: Build and push Docker images for order-service
         run: |
-          docker build . --file Dockerfile --tag order-service:latest
+          docker build . --file order-service/Dockerfile --tag order-service:latest
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push order-service:latest | tee push.log
-          
-          # Add similar steps for other services
+          docker push order-service:latest | tee order-service-push.log
+
+      - name: Build and push Docker images for customer-service
+        run: |
+          docker build . --file customer-service/Dockerfile --tag customer-service:latest
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push customer-service:latest | tee customer-service-push.log
+
+      - name: Build and push Docker images for dashboard-service
+        run: |
+          docker build . --file dashboard-service/Dockerfile --tag dashboard-service:latest
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push dashboard-service:latest | tee dashboard-service-push.log
+
+      - name: Build and push Docker images for delivery-service
+        run: |
+          docker build . --file delivery-service/Dockerfile --tag delivery-service:latest
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push delivery-service:latest | tee delivery-service-push.log
+
+      - name: Build and push Docker images for restaurant-service
+        run: |
+          docker build . --file restaurant-service/Dockerfile --tag restaurant-service:latest
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push restaurant-service:latest | tee restaurant-service-push.log
