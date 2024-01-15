@@ -1,5 +1,5 @@
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jre-slim
+FROM openjdk:16-jre-slim
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -7,8 +7,8 @@ WORKDIR /usr/src/app
 # Argument for the service name
 ARG SERVICE
 
-# Copy JAR files from the specified service's target directory into the container at the working directory
-COPY ${SERVICE}/target/*.jar ./
+# Copy JAR file from the specified service's target directory into the container at the working directory
+COPY ${SERVICE}/target/${SERVICE}-*.jar app.jar
 
 # Specify the command to run on container start
-CMD ["java", "-jar", "${SERVICE}-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.turkeycrew.DeliveryServiceTest
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.129 s - in com.turkeycrew.DeliveryServiceTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 35.848 s - in com.turkeycrew.DeliveryServiceTest
