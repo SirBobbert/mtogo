@@ -25,5 +25,5 @@ jobs:
           
           
           cd ../order-service
-          docker build . --file Dockerfile --tag dashboard-service:latest
+          docker build . --file Dockerfile --tag order-service:latest
           docker push order-service:latest
