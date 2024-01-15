@@ -14,13 +14,17 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Docker
-        uses: docker/setup-docker@v2
+        uses: docker/setup-buildx-action@v1
 
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag order-service:latest
-
-      - name: Log in to Docker Hub (replace with your registry if needed)
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-
-      - name: Push the Docker image
-        run: docker push order-service:latest
+      - name: Build and push Docker images for services
+        run: |
+          cd customer-service
+          docker build . --file Dockerfile --tag customer-service:latest
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push customer-service:latest
+          
+          cd ../dashboard-service
+          docker build . --file Dockerfile --tag dashboard-service:latest
+          docker push dashboard-service:latest
+          
+          # Repeat the above for other services (delivery-service, order-service, restaurant-service, user, etc.)
