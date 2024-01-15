@@ -5,7 +5,7 @@ FROM openjdk:11-jre-slim
 WORKDIR /usr/src/app
 
 # Copy the Spring Boot executable JAR into the container at the working directory
-COPY ./target/order-service-1.0-SNAPSHOT.jar .
+COPY order-service/target/order-service-1.0-SNAPSHOT.jar .
 
 # Specify the command to run on container start
 CMD ["java", "-jar", "order-service-1.0-SNAPSHOT.jar"]
