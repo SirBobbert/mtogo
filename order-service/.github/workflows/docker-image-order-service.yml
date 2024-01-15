@@ -1,17 +1,17 @@
-#name: Docker Image CI (Order Service)
-#
-#on:
-#  push:
-#    branches:
-#      - orderService
-#
-#jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#
-#      - name: Build the Docker image for Order Service
-#        run: docker build . --file Dockerfile --tag order-service-container:$(date +%s)
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - legacy
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
