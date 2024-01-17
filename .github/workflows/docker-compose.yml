@@ -9,19 +9,19 @@ services:
   dashboard-service:
     image: ropsen/dashboard-service:latest
     environment:
-      - PORT=8080
+      - PORT=8085
 
   delivery-service:
     image: ropsen/delivery-service:latest
     environment:
-      - PORT=8080
+      - PORT=8084
 
   order-service:
     image: ropsen/order-service:latest
     environment:
-      - PORT=8080
+      - PORT=8081
 
   restaurant-service:
     image: ropsen/restaurant-service:latest
     environment:
-      - PORT=8080
+      - PORT=8082

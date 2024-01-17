@@ -26,11 +26,13 @@ jobs:
             docker push ${{ secrets.DOCKER_USERNAME }}/$service:latest | tee ${service}-push.log
           done
 
-      - name: Pull Docker images using Docker Compose
-        run: |
-          docker-compose -f .github/workflows/docker-compose.yml pull
+     
 
       - name: Deploy locally using Docker Compose
         run: |
-          # Assuming you have a docker-compose.yml file for local deployment
           docker-compose -f .github/workflows/docker-compose.yml up -d
+          
+
+      - name: Pull Docker images using Docker Compose
+        run: |
+          docker-compose -f .github/workflows/docker-compose.yml pull
