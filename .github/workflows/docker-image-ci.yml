@@ -29,4 +29,4 @@ jobs:
       - name: Deploy locally using Docker Compose
         run: |
           # Assuming you have a docker-compose.yml file for local deployment
-          docker-compose up -d
+          docker-compose -f .github/workflows/docker-compose.yml up -d
