@@ -2,56 +2,26 @@ version: '3'
 
 services:
   customer-service:
-    build:
-      context: ./customer-service
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mysql
+    image: ropsen/customer-service:latest
+    environment:
+      - PORT=8080
 
   dashboard-service:
-    build:
-      context: ./dashboard-service
-    ports:
-      - "8081:8081"
-    depends_on:
-      - mysql
+    image: ropsen/dashboard-service:latest
+    environment:
+      - PORT=8085
 
   delivery-service:
-    build:
-      context: ./delivery-service
-    ports:
-      - "8082:8082"
-    depends_on:
-      - mysql
+    image: ropsen/delivery-service:latest
+    environment:
+      - PORT=8084
 
   order-service:
-    build:
-      context: ./order-service
-    ports:
-      - "8083:8083"
-    depends_on:
-      - mysql
+    image: ropsen/order-service:latest
+    environment:
+      - PORT=8081
 
   restaurant-service:
-    build:
-      context: ./restaurant-service
-    ports:
-      - "8084:8084"
-    depends_on:
-      - mysql
-
-  mysql:
-    image: mysql:latest
+    image: ropsen/restaurant-service:latest
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: microservices_db
-      MYSQL_USER: microservices_user
-      MYSQL_PASSWORD: microservices_password
-    ports:
-      - "3306:3306"
-
-networks:
-  default:
-    external:
-      name: microservices_network
+      - PORT=8082
