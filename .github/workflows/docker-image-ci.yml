@@ -33,5 +33,4 @@ jobs:
       - name: Deploy locally using Docker Compose
         run: |
           # Assuming you have a docker-compose.yml file for local deployment
-          docker-compose -f .github/workflows/docker-compose.yml pull  # Add this line to explicitly pull images
           docker-compose -f .github/workflows/docker-compose.yml up -d
