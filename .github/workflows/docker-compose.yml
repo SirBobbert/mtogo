@@ -2,36 +2,26 @@ version: '3'
 
 services:
   customer-service:
-    build:
-      context: .
-      dockerfile: Dockerfile-customer-service
+    image: ropsen/customer-service:latest
     environment:
       - PORT=8080
 
   dashboard-service:
-    build:
-      context: .
-      dockerfile: Dockerfile-dashboard-service
+    image: ropsen/dashboard-service:latest
     environment:
       - PORT=8085
 
   delivery-service:
-    build:
-      context: .
-      dockerfile: Dockerfile-delivery-service
+    image: ropsen/delivery-service:latest
     environment:
       - PORT=8084
 
   order-service:
-    build:
-      context: .
-      dockerfile: Dockerfile-order-service
+    image: ropsen/order-service:latest
     environment:
       - PORT=8081
 
   restaurant-service:
-    build:
-      context: .
-      dockerfile: Dockerfile-restaurant-service
+    image: ropsen/restaurant-service:latest
     environment:
       - PORT=8082
