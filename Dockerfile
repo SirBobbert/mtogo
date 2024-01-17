@@ -1,4 +1,4 @@
-# Use an official OpenJDK runtime as a parent image
+# Use an official AdoptOpenJDK runtime as a parent image
 FROM adoptopenjdk:16-jre-hotspot
 
 # Set the working directory in the container

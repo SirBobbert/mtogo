@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.turkeycrew.DeliveryServiceTest" time="35.848" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.turkeycrew.DeliveryServiceTest" time="35.622" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="GB"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Rober\AppData\Local\Temp\surefire17432765539331811989\surefirebooter12470736831272678422.jar C:\Users\Rober\AppData\Local\Temp\surefire17432765539331811989 2024-01-15T14-16-40_032-jvmRun1 surefire17465368380231681926tmp surefire_216396760745024927109tmp"/>
+    <property name="sun.java.command" value="C:\Users\Rober\AppData\Local\Temp\surefire16602390517478330182\surefirebooter1290429989107437643.jar C:\Users\Rober\AppData\Local\Temp\surefire16602390517478330182 2024-01-17T10-00-07_553-jvmRun1 surefire3285227039374949512tmp surefire_214384766293982007816tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Rober\OneDrive\Softwareudvikler\2. semester\Exam\mtogo\delivery-service\target\test-classes;C:\Users\Rober\OneDrive\Softwareudvikler\2. semester\Exam\mtogo\delivery-service\target\classes;C:\Users\Rober\.m2\repository\org\projectlombok\lombok\1.18.30\lombok-1.18.30.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.1.5\spring-boot-starter-data-jpa-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.1.5\spring-boot-starter-aop-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-aop\6.0.13\spring-aop-6.0.13.jar;C:\Users\Rober\.m2\repository\org\aspectj\aspectjweaver\1.9.20\aspectjweaver-1.9.20.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.1.5\spring-boot-starter-jdbc-3.1.5.jar;C:\Users\Rober\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-jdbc\6.0.13\spring-jdbc-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\data\spring-data-jpa\3.1.5\spring-data-jpa-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\data\spring-data-commons\3.1.5\spring-data-commons-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-orm\6.0.13\spring-orm-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-beans\6.0.13\spring-beans-6.0.13.jar;C:\Users\Rober\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-aspects\6.0.13\spring-aspects-6.0.13.jar;C:\Users\Rober\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Rober\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.1.5\spring-boot-starter-test-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-starter\3.1.5\spring-boot-starter-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot\3.1.5\spring-boot-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.1.5\spring-boot-autoconfigure-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.1.5\spring-boot-starter-logging-3.1.5.jar;C:\Users\Rober\.m2\repository\ch\qos\logback\logback-classic\1.4.11\logback-classic-1.4.11.jar;C:\Users\Rober\.m2\repository\ch\qos\logback\logback-core\1.4.11\logback-core-1.4.11.jar;C:\Users\Rober\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.20.0\log4j-to-slf4j-2.20.0.jar;C:\Users\Rober\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\Rober\.m2\repository\org\slf4j\jul-to-slf4j\2.0.9\jul-to-slf4j-2.0.9.jar;C:\Users\Rober\.m2\repository\org\yaml\snakeyaml\1.33\snakeyaml-1.33.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-test\3.1.5\spring-boot-test-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.1.5\spring-boot-test-autoconfigure-3.1.5.jar;C:\Users\Rober\.m2\repository\com\jayway\jsonpath\json-path\2.8.0\json-path-2.8.0.jar;C:\Users\Rober\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.1\jakarta.xml.bind-api-4.0.1.jar;C:\Users\Rober\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.2\jakarta.activation-api-2.1.2.jar;C:\Users\Rober\.m2\repository\net\minidev\json-smart\2.4.11\json-smart-2.4.11.jar;C:\Users\Rober\.m2\repository\net\minidev\accessors-smart\2.4.11\accessors-smart-2.4.11.jar;C:\Users\Rober\.m2\repository\org\ow2\asm\asm\9.3\asm-9.3.jar;C:\Users\Rober\.m2\repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\Rober\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\Rober\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.3\junit-jupiter-5.9.3.jar;C:\Users\Rober\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.3\junit-jupiter-api-5.9.3.jar;C:\Users\Rober\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Rober\.m2\repository\org\junit\platform\junit-platform-commons\1.9.3\junit-platform-commons-1.9.3.jar;C:\Users\Rober\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Rober\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.3\junit-jupiter-params-5.9.3.jar;C:\Users\Rober\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.3\junit-jupiter-engine-5.9.3.jar;C:\Users\Rober\.m2\repository\org\junit\platform\junit-platform-engine\1.9.3\junit-platform-engine-1.9.3.jar;C:\Users\Rober\.m2\repository\org\mockito\mockito-core\5.3.1\mockito-core-5.3.1.jar;C:\Users\Rober\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.9\byte-buddy-agent-1.14.9.jar;C:\Users\Rober\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Rober\.m2\repository\org\mockito\mockito-junit-jupiter\5.3.1\mockito-junit-jupiter-5.3.1.jar;C:\Users\Rober\.m2\repository\org\skyscreamer\jsonassert\1.5.1\jsonassert-1.5.1.jar;C:\Users\Rober\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-core\6.0.13\spring-core-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-jcl\6.0.13\spring-jcl-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-test\6.0.13\spring-test-6.0.13.jar;C:\Users\Rober\.m2\repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;C:\Users\Rober\.m2\repository\org\testcontainers\testcontainers\1.18.1\testcontainers-1.18.1.jar;C:\Users\Rober\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Rober\.m2\repository\org\hamcrest\hamcrest-core\2.2\hamcrest-core-2.2.jar;C:\Users\Rober\.m2\repository\org\slf4j\slf4j-api\2.0.9\slf4j-api-2.0.9.jar;C:\Users\Rober\.m2\repository\org\apache\commons\commons-compress\1.23.0\commons-compress-1.23.0.jar;C:\Users\Rober\.m2\repository\org\rnorth\duct-tape\duct-tape\1.0.8\duct-tape-1.0.8.jar;C:\Users\Rober\.m2\repository\org\jetbrains\annotations\17.0.0\annotations-17.0.0.jar;C:\Users\Rober\.m2\repository\com\github\docker-java\docker-java-api\3.3.0\docker-java-api-3.3.0.jar;C:\Users\Rober\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.3\jackson-annotations-2.15.3.jar;C:\Users\Rober\.m2\repository\com\github\docker-java\docker-java-transport-zerodep\3.3.0\docker-java-transport-zerodep-3.3.0.jar;C:\Users\Rober\.m2\repository\com\github\docker-java\docker-java-transport\3.3.0\docker-java-transport-3.3.0.jar;C:\Users\Rober\.m2\repository\net\java\dev\jna\jna\5.12.1\jna-5.12.1.jar;C:\Users\Rober\.m2\repository\org\testcontainers\mysql\1.18.1\mysql-1.18.1.jar;C:\Users\Rober\.m2\repository\org\testcontainers\jdbc\1.18.3\jdbc-1.18.3.jar;C:\Users\Rober\.m2\repository\org\testcontainers\database-commons\1.18.3\database-commons-1.18.3.jar;C:\Users\Rober\.m2\repository\org\testcontainers\junit-jupiter\1.18.1\junit-jupiter-1.18.1.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.1.5\spring-boot-starter-web-3.1.5.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.1.5\spring-boot-starter-json-3.1.5.jar;C:\Users\Rober\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.3\jackson-databind-2.15.3.jar;C:\Users\Rober\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.3\jackson-core-2.15.3.jar;C:\Users\Rober\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.3\jackson-datatype-jdk8-2.15.3.jar;C:\Users\Rober\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.3\jackson-datatype-jsr310-2.15.3.jar;C:\Users\Rober\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.3\jackson-module-parameter-names-2.15.3.jar;C:\Users\Rober\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.1.5\spring-boot-starter-tomcat-3.1.5.jar;C:\Users\Rober\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.15\tomcat-embed-core-10.1.15.jar;C:\Users\Rober\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.15\tomcat-embed-el-10.1.15.jar;C:\Users\Rober\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.15\tomcat-embed-websocket-10.1.15.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-web\6.0.13\spring-web-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-webmvc\6.0.13\spring-webmvc-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-expression\6.0.13\spring-expression-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\kafka\spring-kafka\3.0.12\spring-kafka-3.0.12.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-context\6.0.13\spring-context-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-messaging\6.0.13\spring-messaging-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\spring-tx\6.0.13\spring-tx-6.0.13.jar;C:\Users\Rober\.m2\repository\org\springframework\retry\spring-retry\2.0.4\spring-retry-2.0.4.jar;C:\Users\Rober\.m2\repository\org\apache\kafka\kafka-clients\3.4.1\kafka-clients-3.4.1.jar;C:\Users\Rober\.m2\repository\com\github\luben\zstd-jni\1.5.2-1\zstd-jni-1.5.2-1.jar;C:\Users\Rober\.m2\repository\org\lz4\lz4-java\1.8.0\lz4-java-1.8.0.jar;C:\Users\Rober\.m2\repository\org\xerial\snappy\snappy-java\1.1.8.4\snappy-java-1.1.8.4.jar;C:\Users\Rober\.m2\repository\io\micrometer\micrometer-observation\1.11.5\micrometer-observation-1.11.5.jar;C:\Users\Rober\.m2\repository\io\micrometer\micrometer-commons\1.11.5\micrometer-commons-1.11.5.jar;C:\Users\Rober\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Rober\.m2\repository\org\hibernate\orm\hibernate-core\6.2.0.Final\hibernate-core-6.2.0.Final.jar;C:\Users\Rober\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\Rober\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\Rober\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\Rober\.m2\repository\io\smallrye\jandex\3.0.5\jandex-3.0.5.jar;C:\Users\Rober\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\Rober\.m2\repository\net\bytebuddy\byte-buddy\1.14.9\byte-buddy-1.14.9.jar;C:\Users\Rober\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.3\jaxb-runtime-4.0.3.jar;C:\Users\Rober\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.3\jaxb-core-4.0.3.jar;C:\Users\Rober\.m2\repository\org\eclipse\angus\angus-activation\2.0.1\angus-activation-2.0.1.jar;C:\Users\Rober\.m2\repository\org\glassfish\jaxb\txw2\4.0.3\txw2-4.0.3.jar;C:\Users\Rober\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\Rober\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\Rober\.m2\repository\org\antlr\antlr4-runtime\4.10.1\antlr4-runtime-4.10.1.jar;C:\Users\Rober\.m2\repository\org\hibernate\javax\persistence\hibernate-jpa-2.1-api\1.0.2.Final\hibernate-jpa-2.1-api-1.0.2.Final.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="C:\Users\Rober\AppData\Local\Temp\surefire17432765539331811989\surefirebooter12470736831272678422.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Rober\AppData\Local\Temp\surefire16602390517478330182\surefirebooter1290429989107437643.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.1+12-LTS-29"/>
@@ -52,7 +52,7 @@
     <property name="user.dir" value="C:\Users\Rober\OneDrive\Softwareudvikler\2. semester\Exam\mtogo\delivery-service"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="11864"/>
+    <property name="PID" value="3048"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="Cp1252"/>
@@ -64,68 +64,70 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="test_createCourier" classname="com.turkeycrew.DeliveryServiceTest" time="0.908">
-    <system-out><![CDATA[14:16:49.882 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.turkeycrew.DeliveryServiceTest]: DeliveryServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-14:16:49.979 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.turkeycrew.DeliveryServiceApplication for test class com.turkeycrew.DeliveryServiceTest
-14:16:50.131 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
-14:16:50.287 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
-14:16:50.487 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
-14:16:50.488 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
-14:16:50.504 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
+  <testcase name="test_createCourier" classname="com.turkeycrew.DeliveryServiceTest" time="0.754">
+    <system-out><![CDATA[10:00:16.511 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.turkeycrew.DeliveryServiceTest]: DeliveryServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:00:16.606 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.turkeycrew.DeliveryServiceApplication for test class com.turkeycrew.DeliveryServiceTest
+10:00:16.756 [main] INFO org.testcontainers.utility.ImageNameSubstitutor -- Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+10:00:16.927 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+10:00:17.145 [main] INFO org.testcontainers.dockerclient.DockerClientProviderStrategy -- Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+10:00:17.146 [main] INFO org.testcontainers.DockerClientFactory -- Docker host IP address is localhost
+10:00:17.160 [main] INFO org.testcontainers.DockerClientFactory -- Connected to docker: 
   Server Version: 24.0.7
   API Version: 1.43
   Operating System: Docker Desktop
   Total Memory: 15956 MB
-14:16:50.531 [main] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling docker image: testcontainers/ryuk:0.4.0. Please be patient; this may take some time but only needs to be done once.
-14:16:52.275 [docker-java-stream-775250793] INFO tc.testcontainers/ryuk:0.4.0 -- Starting to pull image
-14:16:52.311 [docker-java-stream-775250793] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  0 downloaded,  0 extracted, (0 bytes/0 bytes)
-14:16:53.204 [docker-java-stream-775250793] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  2 pending,  1 downloaded,  0 extracted, (59 KB/? MB)
-14:16:53.318 [docker-java-stream-775250793] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  1 pending,  2 downloaded,  0 extracted, (4 MB/? MB)
-14:16:53.351 [docker-java-stream-775250793] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  3 downloaded,  0 extracted, (5 MB/5 MB)
-14:16:53.465 [docker-java-stream-775250793] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  3 downloaded,  1 extracted, (5 MB/5 MB)
-14:16:53.600 [docker-java-stream-775250793] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  3 downloaded,  2 extracted, (5 MB/5 MB)
-14:16:53.672 [docker-java-stream-775250793] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  3 downloaded,  3 extracted, (5 MB/5 MB)
-14:16:53.700 [docker-java-stream-775250793] INFO tc.testcontainers/ryuk:0.4.0 -- Pull complete. 3 layers, pulled in 1s (downloaded 5 MB at 5 MB/s)
-14:16:53.721 [main] INFO tc.testcontainers/ryuk:0.4.0 -- Creating container for image: testcontainers/ryuk:0.4.0
-14:16:53.842 [main] INFO tc.testcontainers/ryuk:0.4.0 -- Container testcontainers/ryuk:0.4.0 is starting: a72a1cadda11c2163c573b32800238b813f2f974e99ff7169448550db0362790
-14:16:54.233 [main] INFO tc.testcontainers/ryuk:0.4.0 -- Container testcontainers/ryuk:0.4.0 started in PT3.7231265S
-14:16:54.239 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
-14:16:54.239 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
-14:16:54.240 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
-14:16:54.246 [main] INFO tc.mysql:8.0-debian -- Pulling docker image: mysql:8.0-debian. Please be patient; this may take some time but only needs to be done once.
-14:16:55.751 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Starting to pull image
-14:16:55.752 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  0 pending,  0 downloaded,  0 extracted, (0 bytes/0 bytes)
-14:16:57.156 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers: 11 pending,  1 downloaded,  0 extracted, (14 MB/? MB)
-14:16:57.156 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers: 10 pending,  2 downloaded,  0 extracted, (14 MB/? MB)
-14:16:57.695 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  9 pending,  3 downloaded,  0 extracted, (31 MB/? MB)
-14:16:57.757 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  8 pending,  4 downloaded,  0 extracted, (31 MB/? MB)
-14:16:58.132 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  7 pending,  5 downloaded,  0 extracted, (31 MB/? MB)
-14:16:58.343 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  6 pending,  6 downloaded,  0 extracted, (37 MB/? MB)
-14:16:58.434 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  5 pending,  7 downloaded,  0 extracted, (41 MB/? MB)
-14:16:58.771 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  4 pending,  8 downloaded,  0 extracted, (43 MB/? MB)
-14:16:58.921 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  3 pending,  9 downloaded,  0 extracted, (43 MB/? MB)
-14:16:59.060 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  3 pending,  9 downloaded,  1 extracted, (44 MB/? MB)
-14:16:59.099 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  3 pending,  9 downloaded,  2 extracted, (44 MB/? MB)
-14:16:59.258 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  3 pending,  9 downloaded,  3 extracted, (46 MB/? MB)
-14:16:59.328 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  3 pending,  9 downloaded,  4 extracted, (52 MB/? MB)
-14:16:59.332 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  2 pending, 10 downloaded,  4 extracted, (52 MB/? MB)
-14:16:59.362 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  2 pending, 10 downloaded,  5 extracted, (52 MB/? MB)
-14:17:00.396 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  2 pending, 10 downloaded,  6 extracted, (98 MB/? MB)
-14:17:00.441 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  2 pending, 10 downloaded,  7 extracted, (98 MB/? MB)
-14:17:00.482 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  2 pending, 10 downloaded,  8 extracted, (102 MB/? MB)
-14:17:01.920 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  1 pending, 11 downloaded,  8 extracted, (166 MB/? MB)
-14:17:04.168 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  1 pending, 11 downloaded,  9 extracted, (170 MB/? MB)
-14:17:04.200 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  1 pending, 11 downloaded, 10 extracted, (170 MB/? MB)
-14:17:04.231 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  1 pending, 11 downloaded, 11 extracted, (170 MB/? MB)
-14:17:04.261 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pulling image layers:  1 pending, 11 downloaded, 12 extracted, (170 MB/? MB)
-14:17:04.295 [docker-java-stream-1676773631] INFO tc.mysql:8.0-debian -- Pull complete. 12 layers, pulled in 8s (downloaded 170 MB at 21 MB/s)
-14:17:04.299 [main] INFO tc.mysql:8.0-debian -- Creating container for image: mysql:8.0-debian
-14:17:04.787 [main] INFO tc.mysql:8.0-debian -- Container mysql:8.0-debian is starting: 090ceefe7e8f98df66b936384641d824f209b15ed8fa07c17e523bafa3e37112
-14:17:05.124 [main] INFO tc.mysql:8.0-debian -- Waiting for database connection to become available at jdbc:mysql://localhost:62373/testDb using query 'SELECT 1'
-14:17:19.151 [main] INFO tc.mysql:8.0-debian -- Container mysql:8.0-debian started in PT24.9092525S
-14:17:19.151 [main] INFO tc.mysql:8.0-debian -- Container is started (JDBC URL: jdbc:mysql://localhost:62373/testDb)
-14:17:19.241 [main] INFO org.hibernate.Version -- HHH000412: Hibernate ORM core version 6.2.0.Final
-14:17:19.242 [main] INFO org.hibernate.cfg.Environment -- HHH000406: Using bytecode reflection optimizer
+10:00:17.185 [main] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling docker image: testcontainers/ryuk:0.4.0. Please be patient; this may take some time but only needs to be done once.
+10:00:17.650 [main] INFO org.testcontainers.utility.RegistryAuthLocator -- Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+10:00:19.414 [docker-java-stream-1392295776] INFO tc.testcontainers/ryuk:0.4.0 -- Starting to pull image
+10:00:19.427 [docker-java-stream-1392295776] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  0 downloaded,  0 extracted, (0 bytes/0 bytes)
+10:00:21.252 [docker-java-stream-1392295776] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  2 pending,  1 downloaded,  0 extracted, (306 KB/? MB)
+10:00:21.426 [docker-java-stream-1392295776] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  1 pending,  2 downloaded,  0 extracted, (2 MB/? MB)
+10:00:21.457 [docker-java-stream-1392295776] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  3 downloaded,  0 extracted, (4 MB/5 MB)
+10:00:21.556 [docker-java-stream-1392295776] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  3 downloaded,  1 extracted, (4 MB/5 MB)
+10:00:21.652 [docker-java-stream-1392295776] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  3 downloaded,  2 extracted, (4 MB/5 MB)
+10:00:21.707 [docker-java-stream-1392295776] INFO tc.testcontainers/ryuk:0.4.0 -- Pulling image layers:  0 pending,  3 downloaded,  3 extracted, (5 MB/5 MB)
+10:00:21.733 [docker-java-stream-1392295776] INFO tc.testcontainers/ryuk:0.4.0 -- Pull complete. 3 layers, pulled in 2s (downloaded 5 MB at 2 MB/s)
+10:00:21.757 [main] INFO tc.testcontainers/ryuk:0.4.0 -- Creating container for image: testcontainers/ryuk:0.4.0
+10:00:21.929 [main] INFO tc.testcontainers/ryuk:0.4.0 -- Container testcontainers/ryuk:0.4.0 is starting: 00e07fa5c1015e3f8ea1f89e1d8b59a41ccb0ce6dc895625bf51ba4908dc9774
+10:00:22.399 [main] INFO tc.testcontainers/ryuk:0.4.0 -- Container testcontainers/ryuk:0.4.0 started in PT5.2314243S
+10:00:22.406 [main] INFO org.testcontainers.utility.RyukResourceReaper -- Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+10:00:22.406 [main] INFO org.testcontainers.DockerClientFactory -- Checking the system...
+10:00:22.406 [main] INFO org.testcontainers.DockerClientFactory -- ✔︎ Docker server version should be at least 1.6.0
+10:00:22.413 [main] INFO tc.mysql:8.0-debian -- Pulling docker image: mysql:8.0-debian. Please be patient; this may take some time but only needs to be done once.
+10:00:23.855 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Starting to pull image
+10:00:23.855 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  0 pending,  0 downloaded,  0 extracted, (0 bytes/0 bytes)
+10:00:24.777 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers: 11 pending,  1 downloaded,  0 extracted, (350 KB/? MB)
+10:00:25.321 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers: 10 pending,  2 downloaded,  0 extracted, (16 MB/? MB)
+10:00:25.443 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  9 pending,  3 downloaded,  0 extracted, (22 MB/? MB)
+10:00:25.630 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  8 pending,  4 downloaded,  0 extracted, (32 MB/? MB)
+10:00:25.948 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  7 pending,  5 downloaded,  0 extracted, (32 MB/? MB)
+10:00:26.474 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  6 pending,  6 downloaded,  0 extracted, (39 MB/? MB)
+10:00:26.567 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  5 pending,  7 downloaded,  0 extracted, (43 MB/? MB)
+10:00:26.892 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  5 pending,  7 downloaded,  1 extracted, (44 MB/? MB)
+10:00:26.921 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  5 pending,  7 downloaded,  2 extracted, (44 MB/? MB)
+10:00:27.017 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  4 pending,  8 downloaded,  2 extracted, (44 MB/? MB)
+10:00:27.044 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  4 pending,  8 downloaded,  3 extracted, (45 MB/? MB)
+10:00:27.100 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  4 pending,  8 downloaded,  4 extracted, (45 MB/? MB)
+10:00:27.129 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  4 pending,  8 downloaded,  5 extracted, (47 MB/? MB)
+10:00:27.245 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  3 pending,  9 downloaded,  5 extracted, (50 MB/? MB)
+10:00:27.487 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  2 pending, 10 downloaded,  5 extracted, (57 MB/? MB)
+10:00:27.789 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  1 pending, 11 downloaded,  5 extracted, (68 MB/? MB)
+10:00:27.868 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  1 pending, 11 downloaded,  6 extracted, (69 MB/? MB)
+10:00:27.896 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  1 pending, 11 downloaded,  7 extracted, (69 MB/? MB)
+10:00:27.924 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  1 pending, 11 downloaded,  8 extracted, (69 MB/? MB)
+10:00:30.624 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  0 pending, 12 downloaded,  8 extracted, (169 MB/170 MB)
+10:00:32.594 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  0 pending, 12 downloaded,  9 extracted, (170 MB/170 MB)
+10:00:32.621 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  0 pending, 12 downloaded, 10 extracted, (170 MB/170 MB)
+10:00:32.671 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  0 pending, 12 downloaded, 11 extracted, (170 MB/170 MB)
+10:00:32.699 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pulling image layers:  0 pending, 12 downloaded, 12 extracted, (170 MB/170 MB)
+10:00:32.723 [docker-java-stream--2001148682] INFO tc.mysql:8.0-debian -- Pull complete. 12 layers, pulled in 8s (downloaded 170 MB at 21 MB/s)
+10:00:32.726 [main] INFO tc.mysql:8.0-debian -- Creating container for image: mysql:8.0-debian
+10:00:33.771 [main] INFO tc.mysql:8.0-debian -- Container mysql:8.0-debian is starting: a59f0c3f67c5237c1f5f02284d38832fc0d331184d95028332c64348f3b0a0fc
+10:00:34.106 [main] INFO tc.mysql:8.0-debian -- Waiting for database connection to become available at jdbc:mysql://localhost:62123/testDb using query 'SELECT 1'
+10:00:46.177 [main] INFO tc.mysql:8.0-debian -- Container mysql:8.0-debian started in PT23.7685575S
+10:00:46.177 [main] INFO tc.mysql:8.0-debian -- Container is started (JDBC URL: jdbc:mysql://localhost:62123/testDb)
+10:00:46.274 [main] INFO org.hibernate.Version -- HHH000412: Hibernate ORM core version 6.2.0.Final
+10:00:46.278 [main] INFO org.hibernate.cfg.Environment -- HHH000406: Using bytecode reflection optimizer
 888 88e           888 ,e,                                                                       ,e,
 888 888b   ,e e,  888  "  Y8b Y888P  ,e e,  888,8, Y8b Y888P      dP"Y  ,e e,  888,8, Y8b Y888P  "   e88'888  ,e e,  
 888 8888D d88 88b 888 888  Y8b Y8P  d88 88b 888 "   Y8b Y8P  888 C88b  d88 88b 888 "   Y8b Y8P  888 d888  '8 d88 88b 
@@ -133,26 +135,26 @@
 888 88"    "YeeP" 888 888    Y8P     "YeeP" 888       888        d,dP   "YeeP" 888       Y8P    888  "88,e8'  "YeeP" 
                                                       888                                                            
                                                       888                                                            
-2024-01-15T14:17:19.508+01:00  INFO 11864 --- [           main] com.turkeycrew.DeliveryServiceTest       : Starting DeliveryServiceTest using Java 21.0.1 with PID 11864 (started by Robert in C:\Users\Rober\OneDrive\Softwareudvikler\2. semester\Exam\mtogo\delivery-service)
-2024-01-15T14:17:19.514+01:00  INFO 11864 --- [           main] com.turkeycrew.DeliveryServiceTest       : No active profile set, falling back to 1 default profile: "default"
-2024-01-15T14:17:19.910+01:00  INFO 11864 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-01-15T14:17:19.958+01:00  INFO 11864 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 2 JPA repository interfaces.
-2024-01-15T14:17:20.346+01:00  INFO 11864 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-01-15T14:17:20.508+01:00  INFO 11864 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2024-01-15T14:17:20.633+01:00  INFO 11864 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-01-15T14:17:20.647+01:00  INFO 11864 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-01-15T14:17:20.790+01:00  INFO 11864 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@282c5075
-2024-01-15T14:17:20.791+01:00  INFO 11864 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-01-15T14:17:20.835+01:00  INFO 11864 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-2024-01-15T14:17:21.036+01:00  INFO 11864 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2024-01-15T14:17:21.537+01:00  INFO 11864 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-01-17T10:00:46.555+01:00  INFO 3048 --- [           main] com.turkeycrew.DeliveryServiceTest       : Starting DeliveryServiceTest using Java 21.0.1 with PID 3048 (started by Robert in C:\Users\Rober\OneDrive\Softwareudvikler\2. semester\Exam\mtogo\delivery-service)
+2024-01-17T10:00:46.558+01:00  INFO 3048 --- [           main] com.turkeycrew.DeliveryServiceTest       : No active profile set, falling back to 1 default profile: "default"
+2024-01-17T10:00:46.989+01:00  INFO 3048 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-17T10:00:47.032+01:00  INFO 3048 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.
+2024-01-17T10:00:47.414+01:00  INFO 3048 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-17T10:00:47.549+01:00  INFO 3048 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-17T10:00:47.639+01:00  INFO 3048 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-17T10:00:47.652+01:00  INFO 3048 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-01-17T10:00:47.830+01:00  INFO 3048 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e4ef4c0
+2024-01-17T10:00:47.832+01:00  INFO 3048 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-01-17T10:00:47.873+01:00  INFO 3048 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-01-17T10:00:48.052+01:00  INFO 3048 --- [           main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2024-01-17T10:00:48.507+01:00  INFO 3048 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 Hibernate: create table courier (id integer not null auto_increment, available bit not null, email varchar(255), primary key (id)) engine=InnoDB
 Hibernate: create table delivery_info (id integer not null auto_increment, address varchar(255), creation_time datetime(6), delivery datetime(6), status bit not null, courier_id integer, primary key (id)) engine=InnoDB
 Hibernate: alter table delivery_info add constraint FKl43yf2vnavxirql9prbe9gvmk foreign key (courier_id) references courier (id)
-2024-01-15T14:17:21.843+01:00  INFO 11864 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-01-15T14:17:22.287+01:00  WARN 11864 --- [           main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.turkeycrew.CourierRepository
-2024-01-15T14:17:22.782+01:00  WARN 11864 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-01-15T14:17:23.353+01:00  INFO 11864 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+2024-01-17T10:00:48.699+01:00  INFO 3048 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-17T10:00:49.098+01:00  WARN 3048 --- [           main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.turkeycrew.CourierRepository
+2024-01-17T10:00:49.564+01:00  WARN 3048 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-17T10:00:50.126+01:00  INFO 3048 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
 	allow.auto.create.topics = true
 	auto.commit.interval.ms = 5000
 	auto.include.jmx.reporter = true
@@ -246,12 +248,12 @@ Hibernate: alter table delivery_info add constraint FKl43yf2vnavxirql9prbe9gvmk 
 	ssl.truststore.type = JKS
 	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
 
-2024-01-15T14:17:23.548+01:00  WARN 11864 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : These configurations '[spring.deserializer.value.delegate.class]' were supplied but are not used yet.
-2024-01-15T14:17:23.549+01:00  INFO 11864 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.4.1
-2024-01-15T14:17:23.549+01:00  INFO 11864 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8a516edc2755df89
-2024-01-15T14:17:23.549+01:00  INFO 11864 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1705324643548
-2024-01-15T14:17:23.551+01:00  INFO 11864 --- [           main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Subscribed to topic(s): createDeliveryByUserId
-2024-01-15T14:17:23.558+01:00  INFO 11864 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+2024-01-17T10:00:50.348+01:00  WARN 3048 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : These configurations '[spring.deserializer.value.delegate.class]' were supplied but are not used yet.
+2024-01-17T10:00:50.349+01:00  INFO 3048 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.4.1
+2024-01-17T10:00:50.349+01:00  INFO 3048 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8a516edc2755df89
+2024-01-17T10:00:50.349+01:00  INFO 3048 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1705482050348
+2024-01-17T10:00:50.352+01:00  INFO 3048 --- [           main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Subscribed to topic(s): createDeliveryByUserId
+2024-01-17T10:00:50.358+01:00  INFO 3048 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
 	allow.auto.create.topics = true
 	auto.commit.interval.ms = 5000
 	auto.include.jmx.reporter = true
@@ -345,36 +347,27 @@ Hibernate: alter table delivery_info add constraint FKl43yf2vnavxirql9prbe9gvmk 
 	ssl.truststore.type = JKS
 	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
 
-2024-01-15T14:17:23.564+01:00  WARN 11864 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : These configurations '[spring.deserializer.value.delegate.class]' were supplied but are not used yet.
-2024-01-15T14:17:23.564+01:00  INFO 11864 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.4.1
-2024-01-15T14:17:23.564+01:00  INFO 11864 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8a516edc2755df89
-2024-01-15T14:17:23.564+01:00  INFO 11864 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1705324643564
-2024-01-15T14:17:23.565+01:00  INFO 11864 --- [           main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Subscribed to topic(s): GetAllDeliveriesTrigger
-2024-01-15T14:17:23.573+01:00  INFO 11864 --- [           main] com.turkeycrew.DeliveryServiceTest       : Started DeliveryServiceTest in 4.292 seconds (process running for 34.307)
-2024-01-15T14:17:24.118+01:00  INFO 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.118+01:00  INFO 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.120+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.120+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.120+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2024-01-15T14:17:24.120+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2024-01-15T14:17:24.224+01:00  INFO 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.224+01:00  INFO 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.225+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.225+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.225+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2024-01-15T14:17:24.225+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2024-01-15T14:17:24.334+01:00  INFO 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.334+01:00  INFO 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.334+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.334+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.334+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-2024-01-15T14:17:24.334+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2024-01-17T10:00:50.363+01:00  WARN 3048 --- [           main] o.a.k.clients.consumer.ConsumerConfig    : These configurations '[spring.deserializer.value.delegate.class]' were supplied but are not used yet.
+2024-01-17T10:00:50.363+01:00  INFO 3048 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.4.1
+2024-01-17T10:00:50.363+01:00  INFO 3048 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8a516edc2755df89
+2024-01-17T10:00:50.363+01:00  INFO 3048 --- [           main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1705482050363
+2024-01-17T10:00:50.363+01:00  INFO 3048 --- [           main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Subscribed to topic(s): GetAllDeliveriesTrigger
+2024-01-17T10:00:50.371+01:00  INFO 3048 --- [           main] com.turkeycrew.DeliveryServiceTest       : Started DeliveryServiceTest in 4.041 seconds (process running for 34.435)
+2024-01-17T10:00:50.975+01:00  INFO 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Node -1 disconnected.
+2024-01-17T10:00:50.975+01:00  INFO 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Node -1 disconnected.
+2024-01-17T10:00:50.976+01:00  WARN 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2024-01-17T10:00:50.976+01:00  WARN 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2024-01-17T10:00:50.976+01:00  WARN 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2024-01-17T10:00:50.976+01:00  WARN 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
 Hibernate: select c1_0.id from courier c1_0 where c1_0.email=? limit ?
+2024-01-17T10:00:51.083+01:00  INFO 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Node -1 disconnected.
+2024-01-17T10:00:51.083+01:00  INFO 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Node -1 disconnected.
+2024-01-17T10:00:51.083+01:00  WARN 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2024-01-17T10:00:51.084+01:00  WARN 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2024-01-17T10:00:51.084+01:00  WARN 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2024-01-17T10:00:51.084+01:00  WARN 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
 Hibernate: insert into courier (available,email) values (?,?)
 Customer: Courier(id=1, available=true, email=test@test.test) created successfully
-2024-01-15T14:17:24.502+01:00  INFO 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.502+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.502+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
 ]]></system-out>
     <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\Rober\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.9\byte-buddy-agent-1.14.9.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
@@ -382,15 +375,18 @@ WARNING: If a serviceability tool is not in use, please run with -Djdk.instrumen
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
 ]]></system-err>
   </testcase>
-  <testcase name="test_getCourierById" classname="com.turkeycrew.DeliveryServiceTest" time="0.1">
+  <testcase name="test_getCourierById" classname="com.turkeycrew.DeliveryServiceTest" time="0.102">
     <system-out><![CDATA[Hibernate: insert into courier (available,email) values (?,?)
 Hibernate: select c1_0.id,c1_0.available,c1_0.email from courier c1_0 where c1_0.id=?
-2024-01-15T14:17:24.564+01:00  INFO 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.564+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.564+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2024-01-17T10:00:51.193+01:00  INFO 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Node -1 disconnected.
+2024-01-17T10:00:51.193+01:00  INFO 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Node -1 disconnected.
+2024-01-17T10:00:51.193+01:00  WARN 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2024-01-17T10:00:51.193+01:00  WARN 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2024-01-17T10:00:51.193+01:00  WARN 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2024-01-17T10:00:51.193+01:00  WARN 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
 ]]></system-out>
   </testcase>
-  <testcase name="test_updateCourierEmail" classname="com.turkeycrew.DeliveryServiceTest" time="0.1">
+  <testcase name="test_updateCourierEmail" classname="com.turkeycrew.DeliveryServiceTest" time="0.048">
     <system-out><![CDATA[Hibernate: insert into courier (available,email) values (?,?)
 Hibernate: select c1_0.id from courier c1_0 where c1_0.email=? limit ?
 Hibernate: select c1_0.id,c1_0.available,c1_0.email from courier c1_0 where c1_0.id=?
@@ -398,30 +394,33 @@ Hibernate: select c1_0.id,c1_0.available,c1_0.email from courier c1_0 where c1_0
 Hibernate: update courier set available=?,email=? where id=?
 ]]></system-out>
   </testcase>
-  <testcase name="test_deleteCourier" classname="com.turkeycrew.DeliveryServiceTest" time="0.042">
+  <testcase name="test_deleteCourier" classname="com.turkeycrew.DeliveryServiceTest" time="0.033">
     <system-out><![CDATA[Hibernate: select c1_0.id,c1_0.available,c1_0.email from courier c1_0 where c1_0.id=?
 Hibernate: select c1_0.id,c1_0.available,c1_0.email from courier c1_0 where c1_0.id=?
 Hibernate: delete from courier where id=?
 Hibernate: select c1_0.id,c1_0.available,c1_0.email from courier c1_0 where c1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="test_createDelivery" classname="com.turkeycrew.DeliveryServiceTest" time="0.033">
+  <testcase name="test_createDelivery" classname="com.turkeycrew.DeliveryServiceTest" time="0.025">
     <system-out><![CDATA[Hibernate: insert into delivery_info (address,courier_id,creation_time,delivery,status) values (?,?,?,?,?)
-deliveryInfo: DeliveryInfo(id=1, creationTime=2024-01-15T14:17:24.761533900, delivery=null, address=testAddress, status=false, courier=null) created successfully
+2024-01-17T10:00:51.361+01:00  INFO 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Node -1 disconnected.
+2024-01-17T10:00:51.361+01:00  WARN 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2024-01-17T10:00:51.361+01:00  WARN 3048 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+deliveryInfo: DeliveryInfo(id=1, creationTime=2024-01-17T10:00:51.338657400, delivery=null, address=testAddress, status=false, courier=null) created successfully
 ]]></system-out>
   </testcase>
-  <testcase name="test_getDeliveryById" classname="com.turkeycrew.DeliveryServiceTest" time="0.028">
+  <testcase name="test_getDeliveryById" classname="com.turkeycrew.DeliveryServiceTest" time="0.025">
     <system-out><![CDATA[Hibernate: insert into delivery_info (address,courier_id,creation_time,delivery,status) values (?,?,?,?,?)
 Hibernate: select d1_0.id,d1_0.address,c1_0.id,c1_0.available,c1_0.email,d1_0.creation_time,d1_0.delivery,d1_0.status from delivery_info d1_0 left join courier c1_0 on c1_0.id=d1_0.courier_id where d1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="test_updateDeliveryStatus" classname="com.turkeycrew.DeliveryServiceTest" time="0.033">
+  <testcase name="test_updateDeliveryStatus" classname="com.turkeycrew.DeliveryServiceTest" time="0.023">
     <system-out><![CDATA[Hibernate: select d1_0.id,d1_0.address,c1_0.id,c1_0.available,c1_0.email,d1_0.creation_time,d1_0.delivery,d1_0.status from delivery_info d1_0 left join courier c1_0 on c1_0.id=d1_0.courier_id where d1_0.id=?
 Hibernate: select d1_0.id,d1_0.address,c1_0.id,c1_0.available,c1_0.email,d1_0.creation_time,d1_0.delivery,d1_0.status from delivery_info d1_0 left join courier c1_0 on c1_0.id=d1_0.courier_id where d1_0.id=?
 Hibernate: update delivery_info set address=?,courier_id=?,creation_time=?,delivery=?,status=? where id=?
 ]]></system-out>
   </testcase>
-  <testcase name="test_addCourierToDelivery" classname="com.turkeycrew.DeliveryServiceTest" time="0.076">
+  <testcase name="test_addCourierToDelivery" classname="com.turkeycrew.DeliveryServiceTest" time="0.054">
     <system-out><![CDATA[Hibernate: select d1_0.id,d1_0.address,c1_0.id,c1_0.available,c1_0.email,d1_0.creation_time,d1_0.delivery,d1_0.status from delivery_info d1_0 left join courier c1_0 on c1_0.id=d1_0.courier_id where d1_0.id=?
 Hibernate: select c1_0.id,c1_0.available,c1_0.email from courier c1_0 where c1_0.id=?
 Hibernate: select c1_0.id,c1_0.available,c1_0.email from courier c1_0 where c1_0.id=?
@@ -429,22 +428,17 @@ Hibernate: update courier set available=?,email=? where id=?
 Hibernate: select d1_0.id,d1_0.address,c1_0.id,c1_0.available,c1_0.email,d1_0.creation_time,d1_0.delivery,d1_0.status from delivery_info d1_0 left join courier c1_0 on c1_0.id=d1_0.courier_id where d1_0.id=?
 Hibernate: select c1_0.id,c1_0.available,c1_0.email from courier c1_0 where c1_0.id=?
 Hibernate: update delivery_info set address=?,courier_id=?,creation_time=?,delivery=?,status=? where id=?
-2024-01-15T14:17:24.916+01:00  INFO 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.916+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.917+01:00  WARN 11864 --- [ntainer#1-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-2, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
 ]]></system-out>
   </testcase>
-  <testcase name="test_deleteDelivery" classname="com.turkeycrew.DeliveryServiceTest" time="0.039">
+  <testcase name="test_deleteDelivery" classname="com.turkeycrew.DeliveryServiceTest" time="0.027">
     <system-out><![CDATA[Hibernate: select d1_0.id,d1_0.address,c1_0.id,c1_0.available,c1_0.email,d1_0.creation_time,d1_0.delivery,d1_0.status from delivery_info d1_0 left join courier c1_0 on c1_0.id=d1_0.courier_id where d1_0.id=?
 Hibernate: select d1_0.id,d1_0.address,c1_0.id,c1_0.available,c1_0.email,d1_0.creation_time,d1_0.delivery,d1_0.status from delivery_info d1_0 left join courier c1_0 on c1_0.id=d1_0.courier_id where d1_0.id=?
 Hibernate: delete from delivery_info where id=?
+2024-01-17T10:00:51.484+01:00  INFO 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Node -1 disconnected.
+2024-01-17T10:00:51.484+01:00  WARN 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2024-01-17T10:00:51.484+01:00  WARN 3048 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
 Hibernate: select d1_0.id,d1_0.address,c1_0.id,c1_0.available,c1_0.email,d1_0.creation_time,d1_0.delivery,d1_0.status from delivery_info d1_0 left join courier c1_0 on c1_0.id=d1_0.courier_id where d1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testContainerUp" classname="com.turkeycrew.DeliveryServiceTest" time="0.009">
-    <system-out><![CDATA[2024-01-15T14:17:24.978+01:00  INFO 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Node -1 disconnected.
-2024-01-15T14:17:24.978+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
-2024-01-15T14:17:24.978+01:00  WARN 11864 --- [ntainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-delivery-group-1, groupId=delivery-group] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
-]]></system-out>
-  </testcase>
+  <testcase name="testContainerUp" classname="com.turkeycrew.DeliveryServiceTest" time="0.008"/>
 </testsuite>

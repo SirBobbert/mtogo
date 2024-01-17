@@ -26,3 +26,8 @@ jobs:
             echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
             docker push ${{ secrets.DOCKER_USERNAME }}/$service:latest | tee ${service}-push.log
           done
+
+      - name: Deploy locally using Docker Compose
+        run: |
+          # Assuming you have a docker-compose.yml file for local deployment
+          docker-compose up -d
