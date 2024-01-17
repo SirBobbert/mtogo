@@ -2,26 +2,26 @@ version: '3'
 
 services:
   customer-service:
-    image: customer-service/customer-service:latest
+    image: ropsen/customer-service:latest
     environment:
       - PORT=8080
 
   dashboard-service:
-    image: dashboard-service/dashboard-service:latest
+    image: ropsen/dashboard-service:latest
     environment:
       - PORT=8085
 
   delivery-service:
-    image: delivery-service/delivery-service:latest
+    image: ropsen/delivery-service:latest
     environment:
       - PORT=8084
 
   order-service:
-    image: order-service/order-service:latest
+    image: ropsen/order-service:latest
     environment:
       - PORT=8081
 
   restaurant-service:
-    image: restaurant-service/restaurant-service:latest
+    image: ropsen/restaurant-service:latest
     environment:
       - PORT=8082
