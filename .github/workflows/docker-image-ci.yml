@@ -29,8 +29,7 @@ jobs:
       - name: Pull Docker images using Docker Compose
         run: |
           docker-compose -f .github/workflows/docker-compose.yml pull
-          docker-compose -f .github/workflows/docker-compose.yml up -d
 
-    #  - name: Deploy locally using Docker Compose
-        #run: |
-          #docker-compose -f .github/workflows/docker-compose.yml up -d
+      - name: Deploy locally using Docker Compose
+        run: |
+          docker-compose -f .github/workflows/docker-compose.yml up -d
